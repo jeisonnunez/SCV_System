@@ -1,0 +1,369 @@
+﻿<local:Document x:Class="Vista.Articulos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Inventario.ModelArticulos"
+                mc:Ignorable="d"
+        Title="Articulos" Height="527" Width="868.5" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Name="Deleted" Header="Eliminar" Click="Deleted_Click" >
+            </MenuItem>
+
+        </ContextMenu>
+    </Window.ContextMenu>
+    <Window.Resources>
+        <Style x:Key="CheckBoxStyle" TargetType="{x:Type CheckBox}">
+
+            <Style.Triggers>
+
+                <Trigger Property="Validation.HasError" Value="true">
+
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent}"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <local1:ModelArticulos/>
+
+    </Window.DataContext>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" >
+            <Image x:Name="imgleft" PreviewMouseLeftButtonDown="imgleft_PreviewMouseLeftButtonDown" Cursor="Hand" Source="003-anterior-2.png" HorizontalAlignment="Left" Height="28" Margin="473,6,0,0" VerticalAlignment="Top" Width="31"/>
+            <Image x:Name="imgRight" PreviewMouseLeftButtonDown="imgRight_PreviewMouseLeftButtonDown" Cursor="Hand" Source="004-proximo.png" HorizontalAlignment="Left" Height="28" Margin="513,6,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgCrear" PreviewMouseLeftButtonDown="imgCrear_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-texto.png" HorizontalAlignment="Left" Height="28" Margin="360,7,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgBuscar" PreviewMouseLeftButtonDown="imgBuscar_PreviewMouseLeftButtonDown" Cursor="Hand" Source="002-encontrar.png" HorizontalAlignment="Left" Height="28" Margin="399,7,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgInicio" PreviewMouseLeftButtonDown="imgInicio_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-anterior.png" HorizontalAlignment="Left" Height="28" Margin="437,7,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgFin" Cursor="Hand" PreviewMouseLeftButtonDown="imgFin_PreviewMouseLeftButtonDown" Source="002-anterior-1.png" HorizontalAlignment="Left" Height="28" Margin="549,7,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <TextBlock x:Name="lblNroActiculo" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,59,0,0" TextWrapping="Wrap" Text="Numero de articulo" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtNroArticulo" PreviewTextInput="txtNroArticulo_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="26" Margin="156,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Text="{Binding ItemCode, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="lblDescripcion" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,91,0,0" TextWrapping="Wrap" Text="Descripcion" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtDescripcion" TextChanged="txtDescripcion_TextChanged" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" Text="{Binding ItemName, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" HorizontalAlignment="Left" Height="25" Margin="156,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Button x:Name="btnCrear" Content="Crear" HorizontalAlignment="Left" Margin="41,431,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="163,431,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+            <TextBlock x:Name="lblListaPrecio" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,128,0,0" TextWrapping="Wrap" Text="Lista de precio" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cbListaPrecio" DropDownOpened="cbPrecioUnidad_DropDownOpened" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="156,123,0,0" VerticalAlignment="Top" Width="186">
+
+
+            </ComboBox>
+            <CheckBox x:Name="cbxInventario" Click="cbxInventario_Click" Content="Articulo de inventario" FontWeight="Bold" HorizontalAlignment="Left" Margin="696,38,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=CheckBoxStyle}" IsChecked="{Binding Path=InvnItem,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+            <CheckBox x:Name="cbxCompra" Click="cbxInventario_Click" Content="Articulo de compra" FontWeight="Bold" HorizontalAlignment="Left" Margin="696,58,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=CheckBoxStyle}" IsChecked="{Binding Path=PrchseItem,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+            <CheckBox x:Name="cbxVenta" Click="cbxInventario_Click" Content="Articulo venta" FontWeight="Bold" HorizontalAlignment="Left" Margin="696,78,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=CheckBoxStyle}" IsChecked="{Binding Path=SellItem,  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+            <TabControl x:Name="tcGeneral" HorizontalAlignment="Left" Height="225" Margin="41,188,0,0" VerticalAlignment="Top" Width="786" >
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FF2196F3" />
+                                            <Setter  Property="Foreground" Value="White" />
+                                            <Setter  Property="FontSize" Value="14" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="General" Name="tabGeneral" FontWeight="Bold">
+                    <Grid Background="#FFE5E5E5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <CheckBox x:Name="cbxImpuesto" FontSize="12" Click="cbxInventario_Click" Foreground="Black" Content="Sujeto a impuesto" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top"/>
+                        <DataGrid x:Name="dgItems" Background="White" BorderThickness="1" BorderBrush="LightGray" ColumnWidth="*" HorizontalAlignment="Left" Height="127" Margin="10,56,0,0" VerticalAlignment="Top" Width="378"  CanUserResizeRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" AutoGenerateColumns="False" CanUserDeleteRows="False"  Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="False" IsReadOnly="True" >
+                            <DataGrid.CellStyle>
+
+                                <Style TargetType="{x:Type DataGridCell}" >
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                            <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Height" Value="30"></Setter>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                                </Style>
+
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="White" />
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                                    </Style.Resources>
+
+                                </Style>
+
+                            </DataGrid.RowStyle>
+                            <DataGrid.Resources>
+                                <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                                    <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="En Stock" Width="auto"  x:Name="codigo" >
+
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding OnHand, StringFormat={}{0:#,0.00}, UpdateSourceTrigger=PropertyChanged}" Name="txtCodeCurrency"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Pedido" Width="auto"  x:Name="name" >
+
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding OnOrders, StringFormat={}{0:#,0.00}}" ></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Comprometido" Width="auto"  x:Name="tasa" >
+
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding IsCommited, StringFormat={}{0:#,0.00}}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+
+
+                                <DataGridTemplateColumn Header="Stock Value" Width="auto"  x:Name="stock" >
+
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding StockValue, StringFormat={}{0:#,0.00}}" Name="txtCodeCurrency"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                        <TextBlock x:Name="lblArticuloUnidad" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="473,103,0,0" TextWrapping="Wrap" Text="Articulo Unidad Recuento" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtArticuloUnidad" IsReadOnly="True"  BorderThickness="1"  Foreground="Black" FontSize="12" FontWeight="Normal" Background="LightGray" HorizontalAlignment="Left" Height="21" Margin="630,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Text="{Binding NumInCnt, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, NotifyOnValidationError=True, RelativeSource={RelativeSource Self}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <TextBlock x:Name="lblNombreUnidad" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="473,61,0,0" TextWrapping="Wrap" Text="Nombre Unidad Medida" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txtNombreUnidad" IsReadOnly="True"  BorderThickness="1" Foreground="Black" FontSize="12" FontWeight="Normal" Background="LightGray" HorizontalAlignment="Left" Height="21" Margin="630,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Text="{Binding InvntryUomName, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, NotifyOnValidationError=True, RelativeSource={RelativeSource Self}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                            <TextBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="630,17,0,0" x:Name="bdCodigUnidad" Background="White" HorizontalAlignment="Left" Width="138" Height="23" VerticalAlignment="Top" >
+                            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCodigoUnidad"  Background="White">
+                                <Image PreviewMouseLeftButtonDown="imgCodigoUnidad_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCodigoUnidad" Visibility="Hidden"  Cursor="Hand"  />
+                                <TextBox x:Name="txtCodigoUnidad" FontSize="12" FontWeight="Normal"  GotFocus="txtCodigoUnidad_GotFocus"  LostFocus="txtCodigoUnidad_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.667" Width="105" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"   />
+                            </DockPanel>
+                        </Border>
+                        <TextBlock x:Name="lblCodigoUnidadMedida" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="473,21,0,0" TextWrapping="Wrap" Text="Codigo Unidad Medida" VerticalAlignment="Top"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Finanzas" Name="tabFinanza" FontWeight="Bold">
+                    <Grid Background="#FFE5E5E5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <DataGrid x:Name="dgCuentas" Background="White" BorderThickness="1" BorderBrush="LightGray" ColumnWidth="*" HorizontalAlignment="Left" Height="173" Margin="10,10,0,0" VerticalAlignment="Top" Width="321"  CanUserResizeRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" AutoGenerateColumns="False" CanUserDeleteRows="False"  Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="False" FontSize="10" FontWeight="Normal">
+                            <DataGrid.CellStyle>
+
+                                <Style TargetType="{x:Type DataGridCell}" >
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                            <!--<Setter Property="Foreground"
+                     Value="Black" />-->
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Height" Value="30"></Setter>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                                </Style>
+
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="White" />
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                                    </Style.Resources>
+
+                                </Style>
+
+                            </DataGrid.RowStyle>
+                            <DataGrid.Resources>
+                                <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                                    <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=DataSource}" Value="N">
+                                            <Setter Property="IsReadOnly" Value="True" />
+                                            <Setter Property="Background" Value="White"></Setter>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+                                <Style x:Key="TextBoxStyleNotReadOnly" TargetType="TextBox">
+                                    <Setter Property="Background" Value="#FF74C1FF"></Setter>
+
+                                </Style>
+
+                                <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=DataSource}" Value="N">
+                                            <Setter Property="Background" Value="White"></Setter>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+
+
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="#" Width="auto" IsReadOnly="True" x:Name="ID" >
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <TextBox Foreground="Black" Text="{Binding Path=ID,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" Name="txtAcctName" Background="#FFE5E5E5" IsReadOnly="True"></TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding Path=ID,UpdateSourceTrigger=PropertyChanged}" Background="#FFE5E5E5" Style="{StaticResource TextBlockStyle}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Cuenta" Width="auto"  x:Name="acctCode" >
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Name="bd" >
+                                                <DockPanel Grid.Row="1" Grid.Column="1" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                                    <Image PreviewMouseLeftButtonDown="imgAccount_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Name="imgAccount" Visibility="Visible" Cursor="Hand" />
+                                                    <TextBox x:Name="txtAccount" FontSize="10" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=AcctCode,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                                                </DockPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding Path=AcctCode}" Name="txtAccount" Style="{StaticResource TextBlockStyle}"></TextBlock>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Nombre de Cuenta" Width="auto" IsReadOnly="True" x:Name="nameCuenta" >
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <TextBox Foreground="Black" Text="{Binding Path=AcctName,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" Name="txtAcctName" Background="#FFE5E5E5" IsReadOnly="True"></TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Foreground="Black" Text="{Binding Path=AcctName,UpdateSourceTrigger=PropertyChanged}" Background="#FFE5E5E5" Style="{StaticResource TextBlockStyle}" Name="txtAcctName"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+
+                                </DataGridTemplateColumn>
+
+
+
+
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <TextBlock x:Name="lblMetodoValoracion" FontWeight="Bold" HorizontalAlignment="Left" Margin="577,126,0,0" TextWrapping="Wrap" Text="Metodo Valoracion" VerticalAlignment="Top"/>
+            <ComboBox SelectionChanged="cbMetodoValoracion_SelectionChanged" x:Name="cbMetodoValoracion"  Style="{StaticResource ComboBoxStyle}" Height="23" Background="White"  Foreground="Black" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" IsEditable="True"  HorizontalAlignment="Left" Margin="697,123,0,0" VerticalAlignment="Top" Width="124" ItemsSource="{Binding MetodoValoracion, Mode=OneWay}" DisplayMemberPath="Description" SelectedValuePath="EvalSystem" SelectedValue="{Binding Path=SelectedEvalSystem,
+                UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"/>
+            <TextBlock x:Name="lblGrupo" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,159,0,0" TextWrapping="Wrap" Text="Grupo Unidad" VerticalAlignment="Top"/>
+            <ComboBox SelectionChanged="cbGrupoUnidad_SelectionChanged" SelectedValuePath="UgpEntry"  x:Name="cbGrupoUnidad"  Style="{StaticResource ComboBoxStyle}" Height="23" Background="White"  Foreground="Black" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" IsEditable="True"  HorizontalAlignment="Left" Margin="156,159,0,0" VerticalAlignment="Top" Width="186" ItemsSource="{Binding GrupoUnidad, Mode=OneWay}" DisplayMemberPath="UgpCode"  SelectedValue="{Binding SelectedGrupoUnidad, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" ToolTip="{Binding (Validation.Errors)[0].ErrorContent, NotifyOnValidationError=True, RelativeSource={RelativeSource Self}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        </Grid>
+    </ScrollViewer>
+</local:Document>

@@ -1,0 +1,1665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4325F2C-6837-4EB0-8D24-25979A0A1EEF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Vista</RootNamespace>
+    <AssemblyName>Vista</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="De.TorstenMandelkow.MetroChart, Version=0.9.5818.20693, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ModernUICharts.WPF.Beta.0.9.1\lib\De.TorstenMandelkow.MetroChart.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.24.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.24\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.2.2.920, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.2.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=3.0.1.920, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.3.0.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=13.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.Viewer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\SAPBusinessObjects.WPF.Viewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SAPBusinessObjects.WPF.ViewerShared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\SAPBusinessObjects.WPF.ViewerShared.dll</HintPath>
+    </Reference>
+    <Reference Include="SKGL, Version=2.0.4.1, Culture=neutral, PublicKeyToken=6506df92444891d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SoftwareProtector.1.0.5.1\lib\SKGL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.7.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.7.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\..\..\..\Downloads\HideUnhideDGInWPF\HideUnhideDGInWPF\bin\Debug\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WPFtoolkitFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFtoolkitFramework.1.0.7.5\lib\net45\WPFtoolkitFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Inicio\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BasicColumn.xaml.cs">
+      <DependentUpon>BasicColumn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\INotifyPropertyChangeObservable.cs" />
+    <Compile Include="Finanzas\ModelPlanCuentas\ModelPlanCuentas.cs" />
+    <Compile Include="GeoMapExample.xaml.cs">
+      <DependentUpon>GeoMapExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionArticulos.xaml.cs">
+      <DependentUpon>ImportacionArticulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionDefinicionUnidadesMedida.xaml.cs">
+      <DependentUpon>ImportacionDefinicionUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionesAsientos.xaml.cs">
+      <DependentUpon>ImportacionesAsientos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionSocioNegocio.xaml.cs">
+      <DependentUpon>ImportacionSocioNegocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionGrupoUnidadesMedida.xaml.cs">
+      <DependentUpon>ImportacionGrupoUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImportacionFacturaProveedores.xaml.cs">
+      <DependentUpon>ImportacionFacturaProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\EstablecerStringConnection.xaml.cs">
+      <DependentUpon>EstablecerStringConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\GenerarTXTQuincenal.xaml.cs">
+      <DependentUpon>GenerarTXTQuincenal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Comprobante ARCV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comprobante ARCV.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="InstallerClass.cs">
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="InstallerClass.Designer.cs">
+      <DependentUpon>InstallerClass.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Inventario\InformeAuditoriaSotckUnidades.xaml.cs">
+      <DependentUpon>InformeAuditoriaSotckUnidades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\DefinicionUnidadesMedida.xaml.cs">
+      <DependentUpon>DefinicionUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\ModelPeriodoContable\ModelPeriodoContable.cs" />
+    <Compile Include="Gestion\ModelPeriodosContables\ModelPeriodosContables.cs" />
+    <Compile Include="Gestion\ModelRegistros\ModelRegistros.cs" />
+    <Compile Include="Gestion\ModelRetencionImpuestos\ModelRetencionImpuestos.cs" />
+    <Compile Include="Gestion\ModelTipoCambio\ModelTipoCambio.cs" />
+    <Compile Include="Gestion\ModelUsuarios\ModelUsuarios.cs" />
+    <Compile Include="Gestion\ValidateErrorsClasesImpuestos\ValidateErrorsClasesImpuestos.cs" />
+    <Compile Include="Gestion\ValidateErrorsDetallesSociedad\ValidateErrorsDetallesSociedad.cs" />
+    <Compile Include="Gestion\ValidateErrorsDeterminacionMayor\ModelDeterminacionMayor.cs" />
+    <Compile Include="Gestion\ValidateErrorsMonedas\ValidateErrorsMonedas.cs" />
+    <Compile Include="Gestion\ValidateErrorsNroComprobante\ValidateErrorsNroComprobante.cs" />
+    <Compile Include="Gestion\ValidateErrorsSeleccionarSociedad\ValidateErrorsSeleccionarSociedad.cs" />
+    <Compile Include="Gestion\ValitadeErrorsCodigosFiscales\ValidateErrorsCodigosFiscales.cs" />
+    <Compile Include="Inventario\GrupoUnidadesMedida.xaml.cs">
+      <DependentUpon>GrupoUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Importaciones\ImportacionPlanCuentas.xaml.cs">
+      <DependentUpon>ImportacionPlanCuentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Formularios\TipoCambioAlternativo.xaml.cs">
+      <DependentUpon>TipoCambioAlternativo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportAnularComprobantesIVA.xaml.cs">
+      <DependentUpon>CrystalReportAnularComprobantesIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\AnularComprobanteIVA.xaml.cs">
+      <DependentUpon>AnularComprobanteIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\HardwareKey.cs" />
+    <Compile Include="Gestion\DeterminacionCuentasMayor.xaml.cs">
+      <DependentUpon>DeterminacionCuentasMayor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\DiferenciaConversion.xaml.cs">
+      <DependentUpon>DiferenciaConversion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\GenerarRetencionesIVA.xaml.cs">
+      <DependentUpon>GenerarRetencionesIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\PortalRetencionesISLR.xaml.cs">
+      <DependentUpon>PortalRetencionesISLR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\PortalRetencionesIVA.xaml.cs">
+      <DependentUpon>PortalRetencionesIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Comprobantes de Retencion de IVA Anulados.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comprobantes de Retencion de IVA Anulados.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inicio\ValidationErrorEmpresa\ValidationErrorEmpresa.cs" />
+    <Compile Include="Inicio\ValidationErrorLogin\ValidationErrorsLogin.cs" />
+    <Compile Include="Inicio\ValidationErrorUsuarioSitio\ValidationErrorUsuarioSitio.cs" />
+    <Compile Include="Inventario\ModelArticulos\ModelArticulos.cs" />
+    <Compile Include="Inventario\ModelUnidadMedidaDefinicion\ModelUnidadMedidaDefinicion.cs" />
+    <Compile Include="Listas\ListaGruposUnidadesMedida.xaml.cs">
+      <DependentUpon>ListaGruposUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaClasesImpuestos.xaml.cs">
+      <DependentUpon>ListaClasesImpuestos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaUnidadesMedida.xaml.cs">
+      <DependentUpon>ListaUnidadesMedida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\NavigationViewModel.cs" />
+    <Compile Include="PieChartExample.xaml.cs">
+      <DependentUpon>PieChartExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PointShapeLineExample.xaml.cs">
+      <DependentUpon>PointShapeLineExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PointShapeLineExampleViewModel.cs" />
+    <Compile Include="Produccion\EmisionProduccion.xaml.cs">
+      <DependentUpon>EmisionProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\ListaMateriales.xaml.cs">
+      <DependentUpon>ListaMateriales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\OrdenFabricacion.xaml.cs">
+      <DependentUpon>OrdenFabricacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produccion\ReciboProduccion.xaml.cs">
+      <DependentUpon>ReciboProduccion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Socios Negocio\GestionarReconciliacionesInternas.xaml.cs">
+      <DependentUpon>GestionarReconciliacionesInternas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Licencia\Licencia.xaml.cs">
+      <DependentUpon>Licencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\TablaDiferenciaConversion.xaml.cs">
+      <DependentUpon>TablaDiferenciaConversion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\TablaDiferenciaTipoCambio.xaml.cs">
+      <DependentUpon>TablaDiferenciaTipoCambio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Socios Negocio\TablaReconciliacionesInternasAnteriores.xaml.cs">
+      <DependentUpon>TablaReconciliacionesInternasAnteriores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\UnidadMedidaDefinicion.xaml.cs">
+      <DependentUpon>UnidadMedidaDefinicion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SolidColorExample.xaml.cs">
+      <DependentUpon>SolidColorExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Formulario\CierrePeriodo.xaml.cs">
+      <DependentUpon>CierrePeriodo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\GenerateExcelFile.cs" />
+    <Compile Include="Informes Fiscales\Formularios\Generar_XML_ISLR.xaml.cs">
+      <DependentUpon>Generar_XML_ISLR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\GenerarTXT.xaml.cs">
+      <DependentUpon>GenerarTXT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\ComprobanteISLRMensual.xaml.cs">
+      <DependentUpon>ComprobanteISLRMensual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\ComprobanteISLROperacion.xaml.cs">
+      <DependentUpon>ComprobanteISLROperacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\Libro Ventas Semanal.xaml.cs">
+      <DependentUpon>Libro Ventas Semanal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\LibroComprasSemanal.xaml.cs">
+      <DependentUpon>LibroComprasSemanal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\ListadoComprobantesIVA.xaml.cs">
+      <DependentUpon>ListadoComprobantesIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReport.cs" />
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteARCV.xaml.cs">
+      <DependentUpon>CrystalReportComprobanteARCV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteISLRMensual.xaml.cs">
+      <DependentUpon>CrystalReportComprobanteISLRMensual.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteRetencionIVA.xaml.cs">
+      <DependentUpon>CrystalReportComprobanteRetencionIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteISLROperacion.xaml.cs">
+      <DependentUpon>CrystalReportComprobanteISLROperacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportLibroCompras.xaml.cs">
+      <DependentUpon>CrystalReportLibroCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportLibroComprasSemanal.xaml.cs">
+      <DependentUpon>CrystalReportLibroComprasSemanal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportLibroVentas.xaml.cs">
+      <DependentUpon>CrystalReportLibroVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportLibroVentasSemanal.xaml.cs">
+      <DependentUpon>CrystalReportLibroVentasSemanal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\CrystalReportListadoComprobantesIVA.xaml.cs">
+      <DependentUpon>CrystalReportListadoComprobantesIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Libro de Ventas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libro de Ventas.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\Articulos.xaml.cs">
+      <DependentUpon>Articulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\Asiento.xaml.cs">
+      <DependentUpon>Asiento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Formularios\Balance.xaml.cs">
+      <DependentUpon>Balance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\ClasesImpuestos.xaml.cs">
+      <DependentUpon>ClasesImpuestos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\CodigosFiscales.xaml.cs">
+      <DependentUpon>CodigosFiscales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\ComprobanteARCV.xaml.cs">
+      <DependentUpon>ComprobanteARCV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\ComprobanteIVA.xaml.cs">
+      <DependentUpon>ComprobanteIVA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\Converter.cs" />
+    <Compile Include="Gestion\DetallesSociedad.xaml.cs">
+      <DependentUpon>DetallesSociedad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\DiferenciaTipoCambio.xaml.cs">
+      <DependentUpon>DiferenciaTipoCambio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\Document.cs" />
+    <Compile Include="Compras\EntradaMercancia.xaml.cs">
+      <DependentUpon>EntradaMercancia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaPeriodoISLR.xaml.cs">
+      <DependentUpon>ListaPeriodoISLR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaDateTXT.xaml.cs">
+      <DependentUpon>ListaDateTXT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\LogMensajes.xaml.cs">
+      <DependentUpon>LogMensajes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes WPF\TXTFile.xaml.cs">
+      <DependentUpon>TXTFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Tablas\TablaCierrePeriodo.xaml.cs">
+      <DependentUpon>TablaCierrePeriodo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\EntregaMercancia.xaml.cs">
+      <DependentUpon>EntregaMercancia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\EstableceLogin.cs" />
+    <Compile Include="Ventas\FacturaDeudores.xaml.cs">
+      <DependentUpon>FacturaDeudores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\FacturaProveedores.xaml.cs">
+      <DependentUpon>FacturaProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\InformeAuditoriaStock.xaml.cs">
+      <DependentUpon>InformeAuditoriaStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\Interface.cs" />
+    <Compile Include="Informes Fiscales\Formularios\LibroCompras.xaml.cs">
+      <DependentUpon>LibroCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Formularios\LibroDiario.xaml.cs">
+      <DependentUpon>LibroDiario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Formularios\LibroMayor.xaml.cs">
+      <DependentUpon>LibroMayor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\LibroVentas.xaml.cs">
+      <DependentUpon>LibroVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaArticulos.xaml.cs">
+      <DependentUpon>ListaArticulos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaCodigosFiscales.xaml.cs">
+      <DependentUpon>ListaCodigosFiscales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaCuentas.xaml.cs">
+      <DependentUpon>ListaCuentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaFacturaProveedores.xaml.cs">
+      <DependentUpon>ListaFacturaProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaJournalEntry.xaml.cs">
+      <DependentUpon>ListaJournalEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaPagos.xaml.cs">
+      <DependentUpon>ListaPagos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaRetencionImpuesto.xaml.cs">
+      <DependentUpon>ListaRetencionImpuesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaSociosNegocios.xaml.cs">
+      <DependentUpon>ListaSociosNegocios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListaUsuarios.xaml.cs">
+      <DependentUpon>ListaUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Listas\ListBoxCodigosFiscales.xaml.cs">
+      <DependentUpon>ListBoxCodigosFiscales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion Bancos\MediosPago.xaml.cs">
+      <DependentUpon>MediosPago.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\Monedas.xaml.cs">
+      <DependentUpon>Monedas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\NotaCreditoDeudores.xaml.cs">
+      <DependentUpon>NotaCreditoDeudores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\NotaCreditoProveedores.xaml.cs">
+      <DependentUpon>NotaCreditoProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\NotaDebitoDeudores.xaml.cs">
+      <DependentUpon>NotaDebitoDeudores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\NotaDebitoProveedores.xaml.cs">
+      <DependentUpon>NotaDebitoProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\NroComprobante.xaml.cs">
+      <DependentUpon>NroComprobante.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clases Basicas\NumericConfiguration.cs" />
+    <Compile Include="Gestion Bancos\PagoEfectuado.xaml.cs">
+      <DependentUpon>PagoEfectuado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion Bancos\PagoRecibido.xaml.cs">
+      <DependentUpon>PagoRecibido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\Periodo Contable.xaml.cs">
+      <DependentUpon>Periodo Contable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\PeriodosContables.xaml.cs">
+      <DependentUpon>PeriodosContables.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\PlanCuentas.xaml.cs">
+      <DependentUpon>PlanCuentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Socios Negocio\ReconciliacionInterna.xaml.cs">
+      <DependentUpon>ReconciliacionInterna.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Socios Negocio\ReconciliacionSN.xaml.cs">
+      <DependentUpon>ReconciliacionSN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\Registro.xaml.cs">
+      <DependentUpon>Registro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Comprobante de Retencion de IVA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comprobante de Retencion de IVA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Comprobante ISLR Mensual.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comprobante ISLR Mensual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Comprobante ISLR Operacion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Comprobante ISLR Operacion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Libro de Compras -Semanal Rango de Fechas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libro de Compras -Semanal Rango de Fechas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Libro de Compras.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libro de Compras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Libro de Ventas - Semanal Rango de Fechas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Libro de Ventas - Semanal Rango de Fechas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Informes Fiscales\Reportes\Listado de Comprobantes de IVA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Listado de Comprobantes de IVA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gestion\RetencionImpuesto.xaml.cs">
+      <DependentUpon>RetencionImpuesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\Selecionar_Sociedad.xaml.cs">
+      <DependentUpon>Selecionar_Sociedad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Socios Negocio\SociosNegocio.xaml.cs">
+      <DependentUpon>SociosNegocio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\TablaAuditoriaStock.xaml.cs">
+      <DependentUpon>TablaAuditoriaStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Tablas\TablaBalance.xaml.cs">
+      <DependentUpon>TablaBalance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Tablas\TablaLibroDiario.xaml.cs">
+      <DependentUpon>TablaLibroDiario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Tablas\TablaLibroMayor.xaml.cs">
+      <DependentUpon>TablaLibroMayor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Financieros\Tablas\TablaRetencionImpuesto.xaml.cs">
+      <DependentUpon>TablaRetencionImpuesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\TipoCambio.xaml.cs">
+      <DependentUpon>TipoCambio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Finanzas\TratarPlanCuentas.xaml.cs">
+      <DependentUpon>TratarPlanCuentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\UserControlMenuItem.xaml.cs">
+      <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion\Usuarios.xaml.cs">
+      <DependentUpon>Usuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\UsuarioSitio.xaml.cs">
+      <DependentUpon>UsuarioSitio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informes Fiscales\Formularios\VerComprobantesRetenciosIVAAnulados.xaml.cs">
+      <DependentUpon>VerComprobantesRetenciosIVAAnulados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ItemMenu.cs" />
+    <Compile Include="ViewModel\SubItem.cs" />
+    <Compile Include="Informes Fiscales\Reportes WPF\XMLFile.xaml.cs">
+      <DependentUpon>XMLFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ZoomingAndPanning.xaml.cs">
+      <DependentUpon>ZoomingAndPanning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ZoomingAndPanningViewModel.cs" />
+    <Page Include="BasicColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GeoMapExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionArticulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionDefinicionUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionesAsientos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionSocioNegocio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionGrupoUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImportacionFacturaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inicio\EstablecerStringConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\GenerarTXTQuincenal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\InformeAuditoriaSotckUnidades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\DefinicionUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\GrupoUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Importaciones\ImportacionPlanCuentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Formularios\TipoCambioAlternativo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportAnularComprobantesIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\AnularComprobanteIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\DeterminacionCuentasMayor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\DiferenciaConversion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\GenerarRetencionesIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\PortalRetencionesISLR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\PortalRetencionesIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaGruposUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaClasesImpuestos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaUnidadesMedida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PieChartExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PointShapeLineExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produccion\EmisionProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produccion\ListaMateriales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produccion\OrdenFabricacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Produccion\ReciboProduccion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Socios Negocio\GestionarReconciliacionesInternas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Licencia\Licencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\TablaDiferenciaConversion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\TablaDiferenciaTipoCambio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Socios Negocio\TablaReconciliacionesInternasAnteriores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\UnidadMedidaDefinicion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SolidColorExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utilidades\Formulario\CierrePeriodo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\Generar_XML_ISLR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\GenerarTXT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\ComprobanteISLRMensual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\ComprobanteISLROperacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\Libro Ventas Semanal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\LibroComprasSemanal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\ListadoComprobantesIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteARCV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteISLRMensual.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteRetencionIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportComprobanteISLROperacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportLibroCompras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportLibroComprasSemanal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportLibroVentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportLibroVentasSemanal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\CrystalReportListadoComprobantesIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\Articulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\Asiento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Formularios\Balance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\ClasesImpuestos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\CodigosFiscales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\ComprobanteARCV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\ComprobanteIVA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\DetallesSociedad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\DiferenciaTipoCambio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inicio\Empresa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Compras\EntradaMercancia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaPeriodoISLR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaDateTXT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\LogMensajes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\TXTFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Utilidades\Tablas\TablaCierrePeriodo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventas\EntregaMercancia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventas\FacturaDeudores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Compras\FacturaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\InformeAuditoriaStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\LibroCompras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Formularios\LibroDiario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Formularios\LibroMayor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\LibroVentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaArticulos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaCodigosFiscales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaCuentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaFacturaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaJournalEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaPagos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaRetencionImpuesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaSociosNegocios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListaUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Listas\ListBoxCodigosFiscales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inicio\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Inicio\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inicio\Empresa.xaml.cs">
+      <DependentUpon>Empresa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Inicio\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion Bancos\MediosPago.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\Monedas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventas\NotaCreditoDeudores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Compras\NotaCreditoProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventas\NotaDebitoDeudores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Compras\NotaDebitoProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\NroComprobante.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion Bancos\PagoEfectuado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion Bancos\PagoRecibido.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\Periodo Contable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\PeriodosContables.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\PlanCuentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Socios Negocio\ReconciliacionInterna.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Socios Negocio\ReconciliacionSN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\Registro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\RetencionImpuesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\Selecionar_Sociedad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Socios Negocio\SociosNegocio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventario\TablaAuditoriaStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Tablas\TablaBalance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Tablas\TablaLibroDiario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Tablas\TablaLibroMayor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Financieros\Tablas\TablaRetencionImpuesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\TipoCambio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Finanzas\TratarPlanCuentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\UserControlMenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gestion\Usuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inicio\UsuarioSitio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Reportes WPF\XMLFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informes Fiscales\Formularios\VerComprobantesRetenciosIVAAnulados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ZoomingAndPanning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Comprobante ARCV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Comprobante ARCV.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Comprobantes de Retencion de IVA Anulados.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Comprobantes de Retencion de IVA Anulados.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Libro de Ventas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Libro de Ventas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Comprobante de Retencion de IVA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Comprobante de Retencion de IVA.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Comprobante ISLR Mensual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Comprobante ISLR Mensual.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Comprobante ISLR Operacion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Comprobante ISLR Operacion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Libro de Compras -Semanal Rango de Fechas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Libro de Compras -Semanal Rango de Fechas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Libro de Compras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Libro de Compras.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Libro de Ventas - Semanal Rango de Fechas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Libro de Ventas - Semanal Rango de Fechas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Informes Fiscales\Reportes\Listado de Comprobantes de IVA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Listado de Comprobantes de IVA.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HashCode\HashCode.csproj">
+      <Project>{3ffaf773-3deb-4bcb-85bb-884c65ab577a}</Project>
+      <Name>HashCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{3439047d-0761-457b-8255-51fd25b6cb1e}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SubPeriodo\Entidades.csproj">
+      <Project>{843682f0-006f-4fb5-b82d-e6024ad917c3}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fondoPantalla.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="flecha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="004-izquierda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="003-flecha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="001-atras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="002-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="004-atras-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="003-proximo-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dinero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ui.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inicio\fondoPantalla.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Listas\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\dinero.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion Bancos\001-division.png" />
+    <Resource Include="Gestion Bancos\001-interface.png" />
+    <Resource Include="Gestion Bancos\002-interface-1.png" />
+    <Resource Include="Gestion Bancos\002-interface.png" />
+    <Resource Include="Gestion Bancos\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gestion\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ventas\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Socios Negocio\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Finanzas\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Compras\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\001-anterior.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\001-division.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\001-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\001-texto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\002-anterior-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\002-encontrar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\002-interface-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\002-interface.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\003-anterior-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\003-interface-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Menu\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Informes Financieros\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Informes Financieros\Tablas\004-proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Informes Financieros\Tablas\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventario\excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utilidades\Formulario\lupa.png" />
+    <Resource Include="xml.png" />
+    <Resource Include="txt-icon.png" />
+    <Resource Include="Inicio\003-interface-2.png" />
+    <Resource Include="Inicio\002-interface-1.png" />
+    <Resource Include="Inicio\001-interface.png" />
+    <Resource Include="Informes Fiscales\Images\lupa.png" />
+    <Resource Include="Informes Fiscales\Formularios\lupa.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\txt-icon.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\xml.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\001-browser.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\002-browser-1.png" />
+    <Resource Include="Menu\LogoSCV.png" />
+    <Resource Include="Menu\LogoSCV_V1.PNG" />
+    <Resource Include="Menu\logoSCV_V3.PNG" />
+    <Resource Include="Menu\logoSCV_V2.PNG" />
+    <Resource Include="Informes Financieros\Tablas\lupa.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\003-anterior-2.png" />
+    <Resource Include="Informes Fiscales\Reportes WPF\004-proximo.png" />
+    <Resource Include="Menu\logo.png" />
+    <Content Include="Software Protector.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Finanzas\Formularios\" />
+    <Folder Include="Finanzas\Tablas\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.0.1\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

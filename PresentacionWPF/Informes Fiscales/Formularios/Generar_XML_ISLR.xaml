@@ -1,0 +1,21 @@
+﻿<Window x:Class="Vista.Generar_XML_ISLR"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="Generar XML ISLR" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Closing="Window_Closing"  Height="212.667" Width="398.649" >
+    <Grid>
+        <Button x:Name="btnCrear" Content="OK" HorizontalAlignment="Left" Margin="21,137,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="130,137,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+        <TextBlock x:Name="lblCodigoPeriodo" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,73,0,0" TextWrapping="Wrap" Text="Codigo Periodo:" VerticalAlignment="Top"/>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="153,68,0,0" x:Name="bdCodigoPeriodo" Background="White" HorizontalAlignment="Left" Width="162" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCodigoPeriodo"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgCodigoPeriodo_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCodigoPeriodo" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtCodigoPeriodo" FontSize="12" FontWeight="Normal"  GotFocus="txtCodigoPeriodo_GotFocus"  LostFocus="txtCodigoPeriodo_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+            </DockPanel>
+        </Border>
+
+    </Grid>
+</Window>

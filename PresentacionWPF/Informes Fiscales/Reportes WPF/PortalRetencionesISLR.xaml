@@ -1,0 +1,32 @@
+﻿<Window x:Class="Vista.PortalRetencionesISLR"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="PortalRetencionesISLR" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <WebBrowser x:Name="webSite" HorizontalAlignment="Left" Height="314" Margin="32,75,0,0" VerticalAlignment="Top" Width="727"/>
+        <Image x:Name="imgleft" PreviewMouseLeftButtonDown="imgleft_PreviewMouseLeftButtonDown" Cursor="Hand" Source="003-anterior-2.png" HorizontalAlignment="Left" Height="28" Margin="37,10,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image x:Name="imgRight" PreviewMouseLeftButtonDown="imgRight_PreviewMouseLeftButtonDown" Cursor="Hand" Source="004-proximo.png" HorizontalAlignment="Left" Height="28" Margin="77,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <TextBox x:Name="txtSearch" BorderThickness="1"  LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="28" Margin="145,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="467" RenderTransformOrigin="0.5,0.5">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.022"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <Button x:Name="btnIr" Click="btnIr_Click" Content="IR" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="660,10,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="78" Height="28"/>
+
+    </Grid>
+</Window>

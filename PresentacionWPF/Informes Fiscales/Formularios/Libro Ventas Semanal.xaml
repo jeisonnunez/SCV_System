@@ -1,0 +1,32 @@
+﻿<Window x:Class="Vista.Informes_Fiscales.Formularios.Libro_Ventas_Semanal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista.Informes_Fiscales.Formularios"
+        mc:Ignorable="d"
+        Title="Libro_Ventas_Semanal" Height="187.334" Width="465.333" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock x:Name="lblDesde" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,42,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        <Button x:Name="btnCrear" Content="OK" HorizontalAlignment="Left" Margin="21,90,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="131,90,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+        <DatePicker HorizontalAlignment="Left" Margin="79,39,0,0" VerticalAlignment="Top" Width="128" x:Name="dpDesde">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="lblHasta" FontWeight="Bold" HorizontalAlignment="Left" Margin="245,42,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="302,39,0,0" VerticalAlignment="Top" Width="128" x:Name="dpHasta">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+
+    </Grid>
+</Window>

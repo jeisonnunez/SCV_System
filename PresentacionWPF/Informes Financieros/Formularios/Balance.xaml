@@ -1,0 +1,100 @@
+﻿<Window x:Class="Vista.Balance"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="Balance" Height="495.913" Width="800" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox x:Name="txtSNDesde" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="83,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="btnEjecutar" Content="OK" HorizontalAlignment="Left" Margin="34,417,0,0" VerticalAlignment="Top" Width="94" Padding="3" Click="btnEjecutar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="151,417,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+        <DataGrid x:Name="dgBalance" FontWeight="Normal" BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Left" Height="140" Margin="438,53,0,0" VerticalAlignment="Top" Width="330" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+            <DataGrid.CellStyle>
+
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Height" Value="30"></Setter>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                    <Setter Property="Background" Value="#FFE5E5E5"></Setter>
+                </Style>
+
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE5E5E5" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="30" x:Name="Seleccionado" HeaderStyle="{StaticResource HeaderStyle}" >
+                    <DataGridTemplateColumn.Header >
+                        <CheckBox Name="chkSelectAll" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked"></CheckBox>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Name="seleccionado"  HorizontalAlignment="Center"  IsChecked="{Binding Path=Seleccionado,UpdateSourceTrigger=PropertyChanged}" Checked="seleccionado_Checked" Unchecked="seleccionado_Unchecked">
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate >
+                            <CheckBox Name="seleccionado"  HorizontalAlignment="Center"  IsChecked="{Binding Path=Seleccionado,UpdateSourceTrigger=PropertyChanged}" Checked="seleccionado_Checked" Unchecked="seleccionado_Unchecked">
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="*" Header="Cuenta" x:Name="cuenta" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding Path=AcctCode,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Descripcion" HeaderStyle="{StaticResource HeaderStyle}" x:Name="cuentaDescripcion" Binding="{Binding Path=AcctName,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <ComboBox x:Name="cbNivel" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="639,10,0,0" VerticalAlignment="Top" Width="128"/>
+        <TextBlock x:Name="lblDFechaContabilizacion" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="358,242,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="420,238,0,0" VerticalAlignment="Top" Width="132" x:Name="dpDFechaContabilizacion">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="lblHFechaContabilizacion" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="583,243,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="639,238,0,0" VerticalAlignment="Top" Width="132" x:Name="dpHFechaContabilizacion">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <CheckBox x:Name="cbxCuentas" Content="Cuenta" FontWeight="Bold" HorizontalAlignment="Left" Margin="438,15,0,0" VerticalAlignment="Top" Checked="cbxCuentas_Checked" Unchecked="cbxCuentas_Unchecked"/>
+        <CheckBox x:Name="cbxSN" Content="Socio Negocio" FontWeight="Bold" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Checked="cbxSN_Checked" Unchecked="cbxSN_Unchecked"/>
+        <TextBlock x:Name="lblSNDesde" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="37,56,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblSNHasta" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="234,56,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSNHasta" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="281,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <CheckBox x:Name="cbxMonedaExtranjera" Content="Moneda extranjera" FontWeight="Bold" HorizontalAlignment="Left" Margin="37,284,0,0" VerticalAlignment="Top" Checked="cbxMonedaExtranjera_Checked" Unchecked="cbxMonedaExtranjera_Unchecked"/>
+        <CheckBox x:Name="cbxMonedaSistema" Content="Moneda del sistema" FontWeight="Bold" HorizontalAlignment="Left" Margin="37,309,0,0" VerticalAlignment="Top" Checked="cbxMonedaSistema_Checked" Unchecked="cbxMonedaSistema_Unchecked"/>
+        <CheckBox x:Name="cbxMonedaLocalySystema" Content="Moneda local y de sistema" FontWeight="Bold" HorizontalAlignment="Left" Margin="37,333,0,0" VerticalAlignment="Top" Checked="cbxMonedaLocalySystema_Checked" Unchecked="cbxMonedaLocalySystema_Unchecked"/>
+        <ComboBox x:Name="cbFecha" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="189,241,0,0" VerticalAlignment="Top" Width="128"/>
+        <CheckBox x:Name="cbxCuentasCero" Content="Ocultar cuentas sin contabilizacion" FontWeight="Bold" HorizontalAlignment="Left" Margin="74,364,0,0" VerticalAlignment="Top" IsChecked="True"/>
+    </Grid>
+</Window>

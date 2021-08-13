@@ -1,0 +1,53 @@
+﻿<Window x:Class="Vista.UsuarioSitio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Inicio.ValidationErrorUsuarioSitio"
+        mc:Ignorable="d"
+        Title="UsuarioSitio" Height="255.424" Width="476.405" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <local1:ValidationErrorUsuarioSitio/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="TextBlockStyleValidation" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Button x:Name="btnLogin" Padding="3" Content="Ok" HorizontalAlignment="Left" Margin="67,159,0,0" VerticalAlignment="Top" Width="83"  FontWeight="Bold" FontSize="14" Click="btnLogin_Click"/>
+        <Button x:Name="btnExit" Padding="3" Content="Cancelar" HorizontalAlignment="Left" Margin="165,159,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold" FontSize="14" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+        <TextBlock x:Name="lblPasswordSQL" HorizontalAlignment="Left" Margin="65,113,0,0" Text="Contraseña" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="127"/>
+
+        <TextBox  BorderThickness="1" x:Name="txtUsuarioSitio"  HorizontalAlignment="Left"  Margin="247,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Padding="0" Height="26" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Text="{Binding Path=Username, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)/ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+        <TextBlock x:Name="lblUsuarioSQL" HorizontalAlignment="Left" Margin="65,64,0,0" TextWrapping="Wrap" Text="ID Usuario Administrador" VerticalAlignment="Top" Width="187" FontWeight="Bold" FontSize="14"/>
+        <PasswordBox BorderThickness="1" Background="White" x:Name="txtPasswordSQL" LostFocus="txtClave_LostFocus" GotFocus="txtClave_GotFocus" HorizontalAlignment="Left" Margin="247,110,0,0" VerticalAlignment="Top" Width="170" PasswordChar="*" Height="25" local:Login.Password="{Binding Path=Password, Mode=TwoWay, ValidatesOnDataErrors=True,NotifyOnValidationError=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Password],Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}">
+            <PasswordBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </PasswordBox.Resources>
+        </PasswordBox>
+    </Grid>
+</Window>

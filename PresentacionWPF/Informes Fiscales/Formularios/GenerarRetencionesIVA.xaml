@@ -1,0 +1,36 @@
+﻿<Window x:Class="Vista.GenerarRetencionesIVA"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="GenerarRetencionesIVA" Height="403" Width="392" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <TextBlock x:Name="lblProveedor" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,37,0,0" TextWrapping="Wrap" Text="Proveedor:" VerticalAlignment="Top"/>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="147,32,0,0" x:Name="bdProveedor" Background="White" HorizontalAlignment="Left" Width="161" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpProveedor"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgProveedor_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgProveedor" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtProveedor" FontSize="12" FontWeight="Normal"  GotFocus="txtProveedor_GotFocus"  LostFocus="txtProveedor_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="114" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+            </DockPanel>
+        </Border>
+        <TextBlock x:Name="lblProveedorH" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,79,0,0" TextWrapping="Wrap" Text="Proveedor:" VerticalAlignment="Top"/>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="145,74,0,0" x:Name="bdProveedorH" Background="White" HorizontalAlignment="Left" Width="163" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpProveedorH"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgProveedor1_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgProveedorH" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtProveedor1" FontSize="12" FontWeight="Normal"  GotFocus="txtProveedor_GotFocus"  LostFocus="txtProveedor_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="114" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+            </DockPanel>
+        </Border>
+        <Button x:Name="btnCrear" Click="btnCrear_Click" Content="OK" HorizontalAlignment="Left" Margin="26,320,0,0" VerticalAlignment="Top" Width="95" Padding="3"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="136,318,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+        <TextBlock x:Name="lblQuincena" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,122,0,0" TextWrapping="Wrap" Text="Quincena:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbQuincena" DisplayMemberPath="Name" SelectedValuePath="Code" Style="{StaticResource ComboBoxStyle}" Height="25" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="146,118,0,0" VerticalAlignment="Top" Width="162"/>
+        <TextBlock x:Name="lblTipo" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,162,0,0" TextWrapping="Wrap" Text="Tipo:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbTipo" DisplayMemberPath="Name" SelectedValuePath="Code" Style="{StaticResource ComboBoxStyle}" Height="25" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="146,158,0,0" VerticalAlignment="Top" Width="162"/>
+        <TextBlock x:Name="lblMes" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,202,0,0" TextWrapping="Wrap" Text="Mes:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbMes" DisplayMemberPath="Month" SelectedValuePath="Code" Style="{StaticResource ComboBoxStyle}" Height="25" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="146,198,0,0" VerticalAlignment="Top" Width="162"/>
+        <TextBlock x:Name="lblAnno" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,238,0,0" TextWrapping="Wrap" Text="Año:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbAnno" DisplayMemberPath="Category" SelectedValuePath="Category" Style="{StaticResource ComboBoxStyle}" Height="25" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="146,234,0,0" VerticalAlignment="Top" Width="162"/>
+
+    </Grid>
+</Window>

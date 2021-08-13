@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Vista.GeoMapExample"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Vista"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance local:GeoMapExample}" Height="386.667" Width="537.778">
+    <Grid>
+        <lvc:GeoMap Name="geomap" HeatMap="{Binding Values}" Source="C:\Users\jamara\Downloads\Dashboard1-master\Dashboard1\World.xml" LanguagePack="{Binding LanguagePack}" />
+    </Grid>
+</UserControl>

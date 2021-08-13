@@ -1,0 +1,17 @@
+﻿<Window x:Class="Vista.LibroVentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="LibroVentas" Height="187.334" Width="465.333" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock x:Name="lblPeriodo" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,42,0,0" TextWrapping="Wrap" Text="Ingrese Periodo (AAAA-MM)" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbPeriodo" SelectedValuePath="Code" DisplayMemberPath="Code"  Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="230,38,0,0" VerticalAlignment="Top" Width="162">
+
+        </ComboBox>
+        <Button x:Name="btnCrear" Click="btnCrear_Click" Content="OK" HorizontalAlignment="Left" Margin="21,90,0,0" VerticalAlignment="Top" Width="95" Padding="3"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="131,90,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+    </Grid>
+</Window>

@@ -1,0 +1,124 @@
+﻿<Window x:Class="Vista.DiferenciaConversion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="DiferenciaConversion" Height="541.667" Width="800" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="503">
+            <TextBlock x:Name="lblFechaEjecucion" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="31,240,0,0" TextWrapping="Wrap" Text="Fecha de Ejecucion" VerticalAlignment="Top"/>
+            <DatePicker HorizontalAlignment="Left" Margin="220,235,0,0" VerticalAlignment="Top" Width="138" Name="dpFechaEjecucion">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <Button x:Name="btnEjecutar" Content="Ejecutar" HorizontalAlignment="Left" Margin="34,464,0,-19" VerticalAlignment="Top" Width="94" Padding="3" Click="btnEjecutar_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="151,464,0,-19" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+            <DataGrid x:Name="dgDiferenciaTipoCambio" FontWeight="Normal" BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Left" Height="203" Margin="438,53,0,0" VerticalAlignment="Top" Width="316" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="#FFE5E5E5"/>
+                    </Style>
+
+                </DataGrid.CellStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE5E5E5" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        </Style.Resources>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="30" x:Name="Seleccionado" HeaderStyle="{StaticResource HeaderStyle}" >
+                        <DataGridTemplateColumn.Header >
+                            <CheckBox x:Name="chkSelectAll" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked"/>
+                        </DataGridTemplateColumn.Header>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox x:Name="seleccionado"  HorizontalAlignment="Center"  IsChecked="{Binding Seleccionado, UpdateSourceTrigger=PropertyChanged}" Checked="seleccionado_Checked" Unchecked="seleccionado_Unchecked"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate >
+                                <CheckBox x:Name="seleccionado"  HorizontalAlignment="Center"  IsChecked="{Binding Seleccionado, UpdateSourceTrigger=PropertyChanged}" Checked="seleccionado_Checked" Unchecked="seleccionado_Unchecked"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Width="*" Header="Cuenta" x:Name="cuenta" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding AcctCode, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="*" Header="Descripcion" HeaderStyle="{StaticResource HeaderStyle}" x:Name="cuentaDescripcion" Binding="{Binding AcctName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ComboBox x:Name="cbNivel" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="639,10,0,0" VerticalAlignment="Top" Width="128"/>
+            <CheckBox x:Name="cbxCuentas" Content="Cuenta" FontWeight="Bold" HorizontalAlignment="Left" Margin="438,15,0,0" VerticalAlignment="Top" Checked="cbxCuentas_Checked" Unchecked="cbxCuentas_Unchecked"/>
+            <CheckBox x:Name="cbxSN" Content="Socio Negocio" FontWeight="Bold" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Checked="cbxSN_Checked" Unchecked="cbxSN_Unchecked"/>
+            <TextBlock x:Name="lblSNDesde" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="37,56,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblSNHasta" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="234,56,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="79,52,0,0" x:Name="bdDesdeSN" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpDesdeSN"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgDesdeSN_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="/Vista;component/Utilidades/Formulario/lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgDesdeSN" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtDesdeSN" FontSize="12" FontWeight="Normal"  GotFocus="txtSN_GotFocus"  LostFocus="txtSN_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="123" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="281,52,0,0" x:Name="bdHastaSN" Background="White" HorizontalAlignment="Left" Width="129" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpHastaSN"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgHastaSN_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="/Vista;component/Utilidades/Formulario/lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgHastaSN" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtHastaSN" FontSize="12" FontWeight="Normal"  GotFocus="txtSN_GotFocus"  LostFocus="txtSN_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="119" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaBeneficioCliente" FontWeight="Bold" HorizontalAlignment="Left" Margin="33,323,0,0" TextWrapping="Wrap" Text="Cuenta Beneficio (cliente):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="221,318,0,0" x:Name="bdCuentaBeneficioCliente" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaBeneficioCliente"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaBeneficioCliente_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaBeneficioCliente" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaBeneficioCliente" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaPerdidaCliente" FontWeight="Bold" HorizontalAlignment="Left" Margin="441,323,0,0" TextWrapping="Wrap" Text="Cuenta Perdida (cliente):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="619,318,0,0" x:Name="bdCuentaPerdidaCliente" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaPerdidaCliente"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaPerdidaCliente_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaPerdidaCliente" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaPerdidaCliente" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaBeneficioProveedores" FontWeight="Bold" HorizontalAlignment="Left" Margin="33,359,0,0" TextWrapping="Wrap" Text="Cuenta Beneficio (proveedores):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="223,354,0,0" x:Name="bdCuentaBeneficioProveedores" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaBeneficioProveedores"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaBeneficioProveedores_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaBeneficioProveedores" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaBeneficioProveedores" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaPerdidaProveedores" FontWeight="Bold" HorizontalAlignment="Left" Margin="441,359,0,0" TextWrapping="Wrap" Text="Cuenta Perdida (proveedores):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="619,354,0,0" x:Name="bdCuentaPerdidaProveedores" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaPerdidaProveedores"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaPerdidaProveedores_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaPerdidaProveedores" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaPerdidaProveedores" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaBeneficioCuenta" FontWeight="Bold" HorizontalAlignment="Left" Margin="33,397,0,0" TextWrapping="Wrap" Text="Cuenta Beneficio (Libro Mayor):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="223,392,0,0" x:Name="bdCuentaBeneficioCuenta" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaBeneficioCuenta"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaBeneficioCuenta_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaBeneficioCuenta" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaBeneficioCuenta" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <TextBlock x:Name="lblCuentaPerdidaCuenta" FontWeight="Bold" HorizontalAlignment="Left" Margin="441,399,0,0" TextWrapping="Wrap" Text="Cuenta Perdida (libro mayor):" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="619,394,0,0" x:Name="bdCuentaPerdidaCuenta" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpCuentaPerdidaCuenta"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgCuentaPerdidaCuenta_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgCuentaPerdidaCuenta" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtCuentaPerdidaCuenta" FontSize="12" FontWeight="Normal"  GotFocus="txtCuenta_GotFocus"  LostFocus="txtCuenta_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,168 @@
+﻿<local:Document x:Class="Vista.Monedas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Gestion.ValidateErrorsMonedas"
+                mc:Ignorable="d"
+        Title="Monedas" Height="452.383" Width="466.202" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands1.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
+    </Window.CommandBindings>
+
+    <Window.DataContext>
+        <local1:ValidateErrorsMonedas/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="TextBlockStyleValidation" TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" >
+            <DataGrid x:Name="dgMoneda" Margin="0,20,0,0"  BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray"   Height="311"  Width="374" BeginningEdit="dgMoneda_BeginningEdit"  AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="True" SelectionMode="Single"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"   GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Height" Value="25"></Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                        <Setter Property="Content" Value="Center"></Setter>
+
+
+
+                    </Style>
+
+                </DataGrid.CellStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="White" />
+                                <Setter Property="Foreground"
+                     Value="Black" />
+
+                            </Trigger>
+
+
+                        </Style.Triggers>
+
+                        <Setter Property="Tag" 
+            Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, 
+                            Path=DataContext}"/>
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu DataContext="{Binding PlacementTarget.Tag, 
+                                               RelativeSource={RelativeSource Self}}">
+
+                                    <MenuItem Header="Eliminar" Command="local:CustomCommands1.Exit" />
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+                <DataGrid.Resources>
+                    <Style x:Key="TaxTextBoxStyle" TargetType="TextBox">
+                        <!--<Setter Property="Background" Value="#FF74C1FF"></Setter>-->
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Locked}" Value="N">
+                                <Setter Property="IsReadOnly" Value="False" />
+                                <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Locked}" Value="Y">
+                                <Setter Property="IsReadOnly" Value="True" />
+                                <Setter Property="Background" Value="Green"></Setter>
+
+
+                            </DataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+
+                    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                        <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                    </Style>
+                </DataGrid.Resources>
+
+
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Codigo"  x:Name="codigo">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=CurrCode,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtCodeCurrency" Visibility="Visible"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=CurrCode, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TaxTextBoxStyle}" BorderThickness="0" Background="Transparent" GotFocus="TextBox_GotFocus" Name="txtCodeCurrency"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Moneda"  x:Name="moneda">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=CurrName,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtCodeCurrency"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=CurrName,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" Name="txtCodeCurrency"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn Binding="{Binding CurrName}" Header="Moneda" Width="*"  x:Name="moneda" >
+                    
+                    
+                </DataGridTextColumn>-->
+                    <DataGridTemplateColumn Header="Codigo Internacional"  x:Name="codigointernacional">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=DocCurrCod,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtCodeCurrency"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=DocCurrCod,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" Name="txtCodeCurrency"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn Binding="{Binding DocCurrCod}"  Width="*" Header="Codigo Internacional" x:Name="codigoInternacional"></DataGridTextColumn>-->
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="0,365,0,0" VerticalAlignment="Top" Width="85" Padding="3" FontSize="16" Click="btnOk_Click"/>
+            <Button x:Name="btnCancelar" Click="btnWindow_Close" Content="Cancelar" HorizontalAlignment="Left" Margin="103,365,0,0" VerticalAlignment="Top" Width="89" Padding="3" FontSize="16" Background="Gray" BorderBrush="Gray"/>
+
+        </Grid>
+    </ScrollViewer>
+</local:Document>

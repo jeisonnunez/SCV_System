@@ -1,0 +1,97 @@
+﻿<local:Document x:Class="Vista.TratarPlanCuentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="TratarPlanCuentas" Height="556.22" Width="978" WindowStartupLocation="CenterScreen" Closing="Window_Closing" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Name="Deleted" Header="Eliminar" Click="Deleted_Click" >
+            </MenuItem>
+
+        </ContextMenu>
+    </Window.ContextMenu>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"  >
+            <TreeView x:Name="treeViewCuentas" Background="#FFE5E5E5" BorderBrush="DarkBlue" BorderThickness="1" TreeViewItem.Selected="treeViewCuentas_Selected" HorizontalAlignment="Left" Height="430" Margin="339,10,0,0" VerticalAlignment="Top" Width="609" FontWeight="Bold" Foreground="DarkBlue" GotFocus="treeViewCuentas_GotFocus" >
+
+                <TreeView.Resources>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <Border>
+                                        <TextBlock Text="{Binding}"/>
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="BorderThickness" Value="1"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                <Style.Triggers>
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding RelativeSource={RelativeSource Self},
+                                                  Path=IsMouseOver}" Value="True"/>
+                                                            <Condition Binding="{Binding RelativeSource={RelativeSource AncestorType=TreeViewItem},
+                                                  Path=IsSelected}" Value="False"/>
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Background" Value="#ffe5f3fb"/>
+                                                        <Setter Property="BorderBrush" Value="#ffa5d7f0"/>
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeView.Resources>
+
+            </TreeView>
+
+            <TextBlock x:Name="lblInfoCuenta" HorizontalAlignment="Left" Margin="17,17,0,0" TextWrapping="Wrap" Text="Info Detallada Cuenta de Mayor" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" TextDecorations="Underline"/>
+            <RadioButton x:Name="rbTitulo" Click="rbCuentaActiva_Click" FontWeight="Bold" Content="Titulo" HorizontalAlignment="Left" Margin="14,45,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbCuentaActiva" Click="rbCuentaActiva_Click" FontWeight="Bold" Content="Cuenta Activa" HorizontalAlignment="Left" Margin="132,45,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblCuentaMayor" FontWeight="Bold" HorizontalAlignment="Left" Margin="17,81,0,0" TextWrapping="Wrap" Text="Cuenta de Mayor" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtCuenta" PreviewTextInput="txtCuenta_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="132,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="lblNombre" FontWeight="Bold" HorizontalAlignment="Left" Margin="17,119,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtNombre" PreviewTextInput="txtCuenta_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="132,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="lblUbicacion" HorizontalAlignment="Left" Margin="17,311,0,0" TextWrapping="Wrap" Text="Ubicacion Cuenta de Mayor" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" TextDecorations="Underline" />
+            <TextBlock x:Name="lblCajon" FontWeight="Bold" HorizontalAlignment="Left" Margin="17,351,0,0" TextWrapping="Wrap" Text="Cajon" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblNivel" FontWeight="Bold" HorizontalAlignment="Left" Margin="137,159,0,0" TextWrapping="Wrap" Text="Nivel" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtNivel" Background="LightGray" IsReadOnly="True"  BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="205,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="21,462,0,0" VerticalAlignment="Top" Width="94" Padding="3" FontSize="16" Click="btnOk_Click"/>
+            <Button x:Name="btnSalir" Content="Cancelar" HorizontalAlignment="Left" Margin="138,462,0,0" VerticalAlignment="Top" Width="94" Background="Gray" BorderBrush="Gray" Padding="3" FontSize="16" Click="btnWindow_Close"/>
+            <ComboBox x:Name="cbCajon" Style="{StaticResource ComboBoxStyle}" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="131,351,0,0" VerticalAlignment="Top" Width="161" Height="24"/>
+            <TextBlock x:Name="lblCuentaPadre" FontWeight="Bold" HorizontalAlignment="Left" Margin="17,391,0,0" TextWrapping="Wrap" Text="Articulo Superior" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cbCuentaPadre" Style="{StaticResource ComboBoxStyle}" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="131,391,0,0" VerticalAlignment="Top" Width="161" Height="24">
+
+            </ComboBox>
+            <Button x:Name="btnAddCuentaNivel" IsEnabled="False" Content="Añadir Cuenta Nivel" HorizontalAlignment="Left" Margin="341,462,0,0" VerticalAlignment="Top" Width="168" Padding="3" FontSize="16" Click="btnAddCuentaNivel_Click"/>
+            <Button x:Name="btnAddCuentaSubordinada" IsEnabled="False" Content="Añadir Cuenta Inferior" HorizontalAlignment="Left" Margin="770,462,0,0" VerticalAlignment="Top" Width="177" Padding="3" FontSize="16" Click="btnAddCuentaSubordinada_Click"/>
+        </Grid>
+    </ScrollViewer>
+</local:Document>

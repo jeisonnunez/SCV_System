@@ -1,0 +1,32 @@
+﻿<Window x:Class="Vista.Informes_Fiscales.Formularios.ComprobanteISLROperacion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista.Informes_Fiscales.Formularios"
+        mc:Ignorable="d"
+        Title="ComprobanteISLROperacion" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Height="212.667" Width="450" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock x:Name="lblTipoTransaccion" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,68,0,0" TextWrapping="Wrap" Text="Tipo Transaccion:" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbTipoTransaccion" DisplayMemberPath="Name" SelectedValuePath="Code" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="230,64,0,0" VerticalAlignment="Top" Width="162"/>
+        <TextBlock x:Name="lblProveedor" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,102,0,0" TextWrapping="Wrap" Text="Proveedor:" VerticalAlignment="Top"/>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="231,100,0,0" Name="bdProveedor" Background="White" HorizontalAlignment="Left" Width="162" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" Name="dpProveedor"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgProveedor_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" Name="imgProveedor" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtProveedor" FontSize="12" FontWeight="Normal"  GotFocus="txtProveedor_GotFocus"  LostFocus="txtProveedor_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  ></TextBox>
+            </DockPanel>
+        </Border>
+        <Button x:Name="btnCrear" Content="OK" HorizontalAlignment="Left" Margin="21,137,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="130,137,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+        <TextBlock x:Name="lblNroDocumento" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,27,0,0" TextWrapping="Wrap" Text="NroDocumento:" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNoDocumento" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="230,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+    </Grid>
+</Window>

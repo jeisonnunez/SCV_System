@@ -1,0 +1,240 @@
+﻿<local:Document x:Class="Vista.TablaRetencionImpuesto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="TablaRetencionImpuesto" Height="403.14" Width="895" Loaded="Document_Loaded" Closing="Document_Closing">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            <DataGrid x:Name="dgRetenciones" BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Left" Height="236" Margin="25,54,0,0" VerticalAlignment="Top" Width="839" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="True" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" CanUserAddRows="True">
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Height" Value="30"></Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                    </Style>
+
+                </DataGrid.CellStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="White" />
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        </Style.Resources>
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+                <DataGrid.Resources>
+                    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                        <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="Codigo" Width="auto"  x:Name="codigo" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Name="bd" >
+                                    <DockPanel Grid.Row="1" Grid.Column="1" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                        <Image PreviewMouseLeftButtonDown="imgWTCode_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Name="imgWTCode" Visibility="Visible" Cursor="Hand" />
+                                        <TextBox x:Name="txtWTCode" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=WTCode,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" KeyUp="txtTaxbleAmnt_KeyUp" ></TextBox>
+                                    </DockPanel>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=WTCode,UpdateSourceTrigger=PropertyChanged}" Name="txtWTCode"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Nombre" Width="auto"  x:Name="nombre" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="txtWTName" IsReadOnly="True" Background="#FFE5E5E5" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=WTName,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=WTName,UpdateSourceTrigger=PropertyChanged}" Name="txtWTName"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Tasa" Width="auto"  x:Name="tasa" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" IsReadOnly="True" Background="#FFE5E5E5" Text="{Binding Path=Rate, StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtRate"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5"  Text="{Binding Path=Rate, StringFormat={}{0:#,0.00}, UpdateSourceTrigger=PropertyChanged}" Name="txtRate"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Importe Base" Width="auto"  x:Name="importebase" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" IsReadOnly="True" Background="#FFE5E5E5" Text="{Binding Path=BaseAmnt, StringFormat={}{0:#,0.00}, UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource TextBoxStyle}"  Name="txtBaseAmnt"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=BaseAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtBaseAmnt"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Importe Base FC" Width="auto"  x:Name="importebaseFC" Visibility="Hidden" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" IsReadOnly="True" Background="#FFE5E5E5" Text="{Binding Path=BaseAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource TextBoxStyle}"  Name="txtBaseAmntFC"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=BaseAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtBaseAmntFC"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="PrctBsAmnt" Width="auto"  x:Name="PrctBsAmnt" Visibility="Hidden" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="txtPrctBsAmnt" IsReadOnly="True" Background="#FFE5E5E5" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=PrctBsAmnt,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=PrctBsAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtPrctBsAmnt"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Imp. Sujeto a Retencion" Width="auto"  x:Name="importeSujeto" Visibility="Visible" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=TaxbleAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtTaxbleAmnt" TextChanged="txtWTCode_TextChanged" KeyUp="txtTaxbleAmnt_KeyUp" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=TaxbleAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtTaxbleAmnt"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Imp. Sujeto a RetencionFC" Width="auto"  x:Name="importeSujetoFC" Visibility="Hidden" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=TaxbleAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtTaxbleAmntFC" TextChanged="txtWTCode_TextChanged" KeyUp="txtTaxbleAmnt_KeyUp" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=TaxbleAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtTaxbleAmntFC"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="WImpte. Retencion" Width="auto"  x:Name="wimporte" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=WTAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtWTAmnt" TextChanged="txtWTCode_TextChanged" KeyUp="txtTaxbleAmnt_KeyUp" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=WTAmnt,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtWTAmnt"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="WImpte. RetencionFC" Width="auto"  x:Name="wimporteFC" Visibility="Hidden" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=WTAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtWTAmntFC" TextChanged="txtWTCode_TextChanged" KeyUp="txtTaxbleAmnt_KeyUp" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=WTAmntFC,StringFormat={}{0:#,0.00},UpdateSourceTrigger=PropertyChanged}" Name="txtWTAmntFC"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Categoria" Width="auto"  x:Name="categoria" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" IsReadOnly="True" Background="#FFE5E5E5" Text="{Binding Path=Category,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtCategory"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=Category,UpdateSourceTrigger=PropertyChanged}" Name="txtCategory"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Tipo Base" Width="auto"  x:Name="tipoBase" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" IsReadOnly="True" Background="#FFE5E5E5" Text="{Binding Path=BaseType,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtBaseType"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Background="#FFE5E5E5" Text="{Binding Path=BaseType,UpdateSourceTrigger=PropertyChanged}" Name="txtBaseType"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Cuenta" Width="auto"  x:Name="cuenta" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="txtAccount" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=Account,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" BorderBrush="Gray" BorderThickness="0"  Width="auto"  IsReadOnly="True" Background="#FFE5E5E5" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black"  Background="#FFE5E5E5"  Text="{Binding Path=Account,UpdateSourceTrigger=PropertyChanged}" Name="txtAccount"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="btnCrear" Content="OK" HorizontalAlignment="Left" Margin="31,317,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" Click="btnCancelar_Click" HorizontalAlignment="Left" Margin="153,317,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray"/>
+        </Grid>
+    </ScrollViewer>
+</local:Document>

@@ -1,0 +1,265 @@
+﻿<local:Converter x:Class="Vista.TablaAuditoriaStock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="TablaAuditoriaStock" Height="666.716" Width="1447.038" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Converter_Loaded">
+    <Window.Resources>
+
+        <local:StyleConverter x:Key="StyleConverter"/>
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="1429" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="dgInformeStock" ColumnWidth="*" HorizontalContentAlignment="Stretch" Grid.Row="0" Grid.Column="0" Height="400" Margin="77,136,77,0"  BorderThickness="1"  BorderBrush="LightGray" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Extended" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top"  GridLinesVisibility="All" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="LightGray" CanUserAddRows="False" SelectionUnit="FullRow" FontWeight="Bold" FontSize="10"  Foreground="Black" Background="#FFE5E5E5"  Padding="0">
+
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Setter Property="Padding" Value="0"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Num}" Value="1">
+                                <Setter Property="Background" Value="#FFE5E5E5"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Num}" Value="0">
+                                <Setter Property="Background" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+
+                </DataGrid.CellStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+
+
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        </Style.Resources>
+
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="TextBoxBase.IsReadOnly" Value="True"/>
+
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="auto" Header="Nro Articulo" x:Name="nroarticulo" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=ItemCode, UpdateSourceTrigger=PropertyChanged}" x:Name="txtTransId" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Descripcion" x:Name="descripcion" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=Dscription, UpdateSourceTrigger=PropertyChanged}" x:Name="txtTransId" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Existencias Iniciales" x:Name="existenciasIniciales" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=Dscription, UpdateSourceTrigger=PropertyChanged}" x:Name="txtTransId" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Fecha Contabilizacion" x:Name="refDate" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=DocDate, UpdateSourceTrigger=PropertyChanged}" x:Name="txtRefDate" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                    <DataGridTemplateColumn Header="Documento" Width="auto" x:Name="NroDocumento" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel Grid.Row="1" Grid.Column="1" Margin="4.667,3.667,4.667,2.667" x:Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                    <Image PreviewMouseLeftButtonDown="img_PreviewMouseLeftButtonDown" DockPanel.Dock="Left" Source="004-proximo.png" Width="20" Height="15"  Margin="0,0,0,-0.333" x:Name="img" Cursor="Hand" Visibility="{Binding Path=Title, Converter={StaticResource StyleConverter}, UpdateSourceTrigger=PropertyChanged}"  />
+                                    <TextBlock x:Name="txtTransType" Text="{Binding Path=TransType, UpdateSourceTrigger=PropertyChanged}"  Margin="0,0,0,-0.333" Width="95" TextAlignment="Center"  />
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Cantidad" x:Name="cantidad" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=Quantity, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Costos" x:Name="costos" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=CalcPrice, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Valor Trans" x:Name="valorTrans" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=TransValue, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Cantidad Acumulada" x:Name="cantidadAcumulada" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=QuantityAcum, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Valor Acumulado" x:Name="valorAcumulado" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=Balance, UpdateSourceTrigger=PropertyChanged}" x:Name="txtBalance" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Unidad Recuento" x:Name="unidadRecuento" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=InvntryUomCode, UpdateSourceTrigger=PropertyChanged}" x:Name="txtInvntryUomCode" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Unidad Registro" x:Name="unidadRegistro" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=UomCode, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Unidad Base" x:Name="unidadComparativa" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=UomCode2, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode2" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Entradas" x:Name="entrada" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=InQty, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode2" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Entradas (ML)" x:Name="entradaBS" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=InValue, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode2" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="auto" Header="Salida" x:Name="salida" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=OutQty, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode2" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Salidas (ML)" x:Name="salidaML" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=OutValue, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUomCode2" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Salida Acumulada" x:Name="salidaAcumulada" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=OutQtyAcum, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Salida Acumulada (ML)" x:Name="salidaAcumuladaML" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=OutValueAcum, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Entrada Acumulada " x:Name="entradaAcumulada" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=InQtyAcum, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Entrada Acumulada (ML) " x:Name="entradaAcumuladaML" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=InValueAcum, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Saldo Inicial" x:Name="saldoInicial" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=SaldoInicial, UpdateSourceTrigger=PropertyChanged}" x:Name="txtSaldoInicial" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Header="Cantidad Inicial" x:Name="cantidadInicial" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=CantidadInicial, UpdateSourceTrigger=PropertyChanged}" x:Name="txtCantidadInicial" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="auto" Visibility="Hidden" x:Name="ugpEntry" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=UgpEntry, UpdateSourceTrigger=PropertyChanged}" x:Name="txtUgpEntry" TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock x:Name="lblDeFecha" HorizontalAlignment="Left" Margin="74,27,0,0" TextWrapping="Wrap" Text="De Fecha" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblHastaFecha" HorizontalAlignment="Left" Margin="344,28,0,0" TextWrapping="Wrap" Text="Hasta" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+
+            <DatePicker  x:Name="dpFechaHasta" HorizontalAlignment="Left" Margin="403,24,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <DatePicker  x:Name="dpFechaDesde" HorizontalAlignment="Left" Margin="152,24,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <Button x:Name="btnOk" Click="btnOk_Click" Content="OK" HorizontalAlignment="Left" Margin="78,563,0,0" VerticalAlignment="Top" Width="100"/>
+            <Image PreviewMouseLeftButtonDown="imgExcel_PreviewMouseLeftButtonDown" Grid.Row="0" Grid.Column="0" Source="excel.png"  x:Name="imgExcel" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" Height="40" Margin="1312,28,77.333,0" VerticalAlignment="Top" />
+            <Button x:Name="btnCancelar" Click="btnCancelar_Click" Content="Cancelar" HorizontalAlignment="Left" Margin="208,563,0,0" VerticalAlignment="Top" Width="100" Background="Gray" BorderBrush="Gray"/>
+            <Button x:Name="btnStockUnidadesMedida" Click="btnStockUnidadesMedida_Click" Content="Stock Unidades Medida" Margin="0,558,77.333,30" Height="32" HorizontalAlignment="Right" Width="182"/>
+            <CheckBox x:Name="cbxOcultarDetalle" IsChecked="True" Foreground="Black" FontWeight="Bold" Content="Mostrar detalles" Checked="cbxOcultarDetalle_Checked" Unchecked="cbxOcultarDetalle_Unchecked" HorizontalAlignment="Left" Margin="74,73,0,0" VerticalAlignment="Top"/>
+
+
+        </Grid>
+    </ScrollViewer>
+</local:Converter>

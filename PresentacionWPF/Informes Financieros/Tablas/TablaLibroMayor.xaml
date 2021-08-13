@@ -1,0 +1,244 @@
+﻿<local:Converter x:Class="Vista.TablaLibroMayor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"       
+        xmlns:local="clr-namespace:Vista"
+        Title="TablaLibroMayor"  Height="650.717" Width="1484.477" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Window.Resources>
+        <local:NameToBrushConverter x:Key="NameToBrushConverter"/>
+        <local:NameToBrushConverter1 x:Key="NameToBrushConverter1"/>
+        <local:StyleConverter x:Key="StyleConverter"/>
+        <local:ColorBrushConverter x:Key="ColorBrushConverter"/>
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="auto" Margin="0,0,3.333,0.333" >
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top"  Width="1379">
+
+            <DataGrid x:Name="dgLibroMayor" Height="400" Margin="-55,137,-87,0" VerticalAlignment="Top" Width="1297"  BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Center" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Extended" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="LightGray" CanUserAddRows="False" SelectionUnit="FullRow" Background="White" FontWeight="Bold" FontSize="10"  Foreground="Black" Padding="0">
+
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Num}" Value="1">
+                                <Setter Property="Background" Value="#FFE5E5E5"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Num}" Value="0">
+                                <Setter Property="Background" Value="White"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        <Setter Property="Padding" Value="0"></Setter>
+                    </Style>
+
+                </DataGrid.CellStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Padding" Value="0"></Setter>
+                        <Setter Property="TextBox.Background" Value="White"></Setter>
+                        <Setter Property="TextBox.IsReadOnly" Value="True"></Setter>
+
+
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        </Style.Resources>
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="auto" Header="Fecha Contabilizacion" x:Name="refDate" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=RefDate,UpdateSourceTrigger=PropertyChanged}" Name="txtRefDate" TextAlignment="Center" ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="auto" Header="Fecha Vencimiento" x:Name="DueDate" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=DueDate,UpdateSourceTrigger=PropertyChanged}" Name="txtDueDate" TextAlignment="Center" Foreground="{Binding Path=Title,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NameToBrushConverter1}}" ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="auto" Header="Fecha Documento" x:Name="TaxDate" IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Path=TaxDate,UpdateSourceTrigger=PropertyChanged}" Name="txtTaxDate" TextAlignment="Center" ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Nro Documento" Width="auto" x:Name="NroDocumento" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DockPanel Grid.Row="1" Grid.Column="1" Margin="4.667,3.667,4.667,2.667" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                    <Image PreviewMouseLeftButtonDown="img_PreviewMouseLeftButtonDown" DockPanel.Dock="Left" Source="004-proximo.png" Width="20" Height="15"  Margin="0,0,0,-0.333" Name="img" Cursor="Hand" Visibility="{Binding Path=Title,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StyleConverter}}"  />
+                                    <TextBlock x:Name="txtTransType" Text="{Binding Path=TransType,UpdateSourceTrigger=PropertyChanged}"  Margin="0,0,0,-0.333" Width="95" TextAlignment="Center"  ></TextBlock>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn  Width="auto" Header="Nro de Asiento"  x:Name="TransId"  Binding="{Binding Path=TransId,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Center" >
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Comentario"  x:Name="Memo"  Binding="{Binding Path=Memo,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Center">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground" Value="{Binding Path=Title,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NameToBrushConverter1}}"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Cuenta de Mayor/SN"  x:Name="cuenta"  Binding="{Binding Path=ContraAct,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Center">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTemplateColumn Header="Nombre Cuenta de Mayor/SN" Width="auto" x:Name="nombrec" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+
+                                <TextBlock x:Name="txtNombre" Text="{Binding Path=AcctName,UpdateSourceTrigger=PropertyChanged}"  Margin="0,0,0,-0.333" Width="95" TextAlignment="Center"  ></TextBlock>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Width="auto" Header="Debito (ML)"  x:Name="debit" Visibility="Visible" Binding="{Binding Path=Debit,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Credito (ML)"  x:Name="credit" Visibility="Visible" Binding="{Binding Path=Credit,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo (ML)"  x:Name="saldo" Visibility="Visible" Binding="{Binding Path=Saldo,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo Acumulado (ML)"  x:Name="saldoAcum" Visibility="Visible" Binding="{Binding Path=SaldoAcum,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Debito (ME)" Visibility="Visible"  x:Name="FCDebit" Binding="{Binding Path=FCDebit,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Credito (ME)" Visibility="Visible"  x:Name="FCCredit" Binding="{Binding Path=FCCredit,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo (ME)" Visibility="Visible" x:Name="FCSaldo" Binding="{Binding Path=FCSaldo,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo Acumulado (ME)"  x:Name="FCSaldoAcum" Visibility="Visible" Binding="{Binding Path=FCSaldoAcum,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Debito (MS)"  x:Name="SYSDeb" Visibility="Visible" Binding="{Binding Path=SYSDeb,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Credito (MS)"  x:Name="SYSCred" Visibility="Visible" Binding="{Binding Path=SYSCred,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo (MS)"  x:Name="SYSSaldo" Visibility="Visible" Binding="{Binding Path=SaldoSYS,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="auto" Header="Saldo Acumulado (MS)"  x:Name="SaldoSYSAcoum" Visibility="Visible" Binding="{Binding Path=SaldoSYSAcum,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" TextBlock.TextAlignment="Right">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Right"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock x:Name="lblDeFecha" HorizontalAlignment="Left" Margin="65,23,0,0" TextWrapping="Wrap" Text="De Fecha" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblHastaFecha" HorizontalAlignment="Left" Margin="334,24,0,0" TextWrapping="Wrap" Text="Hasta" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+
+            <Button x:Name="btnOk" Click="btnOk_Click" Content="OK" HorizontalAlignment="Left" Margin="0,566,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.887,0.417"/>
+            <DatePicker  Name="dpFechaHasta" HorizontalAlignment="Left" Margin="393,20,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <DatePicker  Name="dpFechaDesde" HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <Image PreviewMouseLeftButtonDown="imgExcel_PreviewMouseLeftButtonDown" Source="excel.png"  Margin="1313,20,26,588" x:Name="imgExcel" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" />
+
+        </Grid>
+    </ScrollViewer>
+</local:Converter>

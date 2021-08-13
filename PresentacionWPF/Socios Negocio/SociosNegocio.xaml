@@ -1,0 +1,289 @@
+﻿<Window x:Class="Vista.SociosNegocio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="Socios Negocio" Height="713" Width="853.5" WindowStartupLocation="CenterScreen" Closing="Window_Closing"  Loaded="Window_Loaded">
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Name="Deleted" Header="Eliminar" Click="Deleted_Click" >
+            </MenuItem>
+
+        </ContextMenu>
+    </Window.ContextMenu>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+        <Image x:Name="imgleft" PreviewMouseLeftButtonDown="imgleft_PreviewMouseLeftButtonDown" Cursor="Hand" Source="003-anterior-2.png" HorizontalAlignment="Left" Height="28" Margin="439,10,0,0" VerticalAlignment="Top" Width="31"/>
+        <Image x:Name="imgRight" PreviewMouseLeftButtonDown="imgRight_PreviewMouseLeftButtonDown" Cursor="Hand" Source="004-proximo.png" HorizontalAlignment="Left" Height="28" Margin="479,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <Image x:Name="imgCrear" PreviewMouseLeftButtonDown="imgCrear_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-texto.png" HorizontalAlignment="Left" Height="28" Margin="326,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <Image x:Name="imgBuscar" PreviewMouseLeftButtonDown="imgBuscar_PreviewMouseLeftButtonDown" Cursor="Hand" Source="002-encontrar.png" HorizontalAlignment="Left" Height="28" Margin="365,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <Image x:Name="imgInicio" PreviewMouseLeftButtonDown="imgInicio_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-anterior.png" HorizontalAlignment="Left" Height="28" Margin="403,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <Image x:Name="imgFin" Cursor="Hand" PreviewMouseLeftButtonDown="imgFin_PreviewMouseLeftButtonDown" Source="002-anterior-1.png" HorizontalAlignment="Left" Height="28" Margin="515,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+        <TabControl x:Name="tcNotaDebitoProveedores" HorizontalAlignment="Left" Height="371" Margin="36,238,0,0" VerticalAlignment="Top" Width="772" >
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#FF2196F3" />
+                                        <Setter  Property="Foreground" Value="White" />
+                                        <Setter  Property="FontSize" Value="14" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="General" Name="tabGeneral" FontWeight="Bold">
+                <Grid Background="#FFE5E5E5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="66*"/>
+                        <ColumnDefinition Width="317*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="lblPhone1" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,25,0,0" TextWrapping="Wrap" Text="Telefono1" Foreground="Black" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtPhone1" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="117,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.ColumnSpan="2" FontWeight="Normal">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="lblPhone2" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,59,0,0" TextWrapping="Wrap" Text="Telefono2" Foreground="Black" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtPhone2" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="117,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.ColumnSpan="2">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="lblFax" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,93,0,0" TextWrapping="Wrap" Text="FAX" Foreground="Black" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtFax" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="117,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.ColumnSpan="2">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="lblCorreo" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="253.333,25,0,0" TextWrapping="Wrap" Text="Correo" Foreground="Black" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txtCorreo" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="379.333,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.Column="1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="lblSitioWeb" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="253.333,59,0,0" TextWrapping="Wrap" Text="Sitio Web" Foreground="Black" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txtSitioWeb" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="379.333,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.Column="1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="lblPersonaContacto" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="253.333,93,0,0" TextWrapping="Wrap" Text="Persona Contacto" Foreground="Black" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txtPersonaContacto" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="379.333,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Grid.Column="1">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Direcciones" Name="tabDirecciones" FontWeight="Bold">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid Margin="553,42,26.333,67" Visibility="Hidden" ColumnWidth="*" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="LightGray" BorderThickness="1" BorderBrush="LightGray" Name="dgDirecciones" AutoGenerateColumns="False">
+                        <DataGrid.CellStyle>
+
+                            <Style TargetType="{x:Type DataGridCell}" >
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver"
+                 Value="True">
+                                        <Setter Property="Background"
+                     Value="LightBlue" />
+                                        <Setter Property="Foreground"
+                     Value="Black" />
+
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Setter Property="Height" Value="30"></Setter>
+
+                            </Style>
+
+                        </DataGrid.CellStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver"
+                 Value="True">
+                                        <Setter Property="Background"
+                     Value="White" />
+
+
+                                    </Trigger>
+                                </Style.Triggers>
+
+                            </Style>
+
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns >
+                            <DataGridTextColumn Header="Direccion" Width="*" TextBlock.TextAlignment="Center"  Binding="{Binding Datos}">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="HorizontalAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter Property="HorizontalContentAlignment"
+                 Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock x:Name="lblDireccion" FontSize="12" FontWeight="Bold" HorizontalAlignment="Left" Margin="13,25,0,0" TextWrapping="Wrap" Text="Direccion" Foreground="Black" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtDireccion" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" Foreground="Black" VerticalContentAlignment="Top" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="137" Margin="117,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="3"/>
+
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <!--<TextBlock x:Name="lblIDDireccion" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,83,0,0" TextWrapping="Wrap" Text="ID de Direccion" VerticalAlignment="Top"/>
+                    <Separator HorizontalAlignment="Left" Height="11" Margin="417,96,0,0" VerticalAlignment="Top" Width="135"/>
+                    <TextBlock x:Name="lblNombreD1" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,107,0,0" TextWrapping="Wrap" Text="Nombre Direccion 1" VerticalAlignment="Top"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,120,0,0" VerticalAlignment="Top" Width="135"/>
+                    <TextBlock x:Name="lblNombreD2" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,133,0,0" TextWrapping="Wrap" Text="Nombre Direccion 2" VerticalAlignment="Top"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,148,0,0" VerticalAlignment="Top" Width="135"/>
+                    <TextBlock x:Name="lblCalle" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,155,0,0" TextWrapping="Wrap" Text="Calle" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblCiudad" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,179,0,0" TextWrapping="Wrap" Text="Ciudad" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblCodigoPostal" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,205,0,0" TextWrapping="Wrap" Text="Codigo Postal" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblEstado" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,227,0,0" TextWrapping="Wrap" Text="Estado" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="lblPais" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="416,251,0,0" TextWrapping="Wrap" Text="Pais" VerticalAlignment="Top"/>
+
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,168,0,0" VerticalAlignment="Top" Width="135"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,192,0,0" VerticalAlignment="Top" Width="135"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,220,0,0" VerticalAlignment="Top" Width="135"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,240,0,0" VerticalAlignment="Top" Width="135"/>
+                    <Separator HorizontalAlignment="Left" Height="12" Margin="417,264,0,0" VerticalAlignment="Top" Width="135"/>-->
+                </Grid>
+            </TabItem>
+            <TabItem Header="Finanzas" Name="tabFinanzas" FontWeight="Bold">
+                <Grid Background="#FFE5E5E5" >
+                    <TextBlock x:Name="lblCuentaAsociada" FontSize="12" Foreground="Black"  FontWeight="Bold" HorizontalAlignment="Left" Margin="24,24,0,0" TextWrapping="Wrap" Text="Cuenta Asociada" VerticalAlignment="Top" Width="95"/>
+
+                    <TextBlock x:Name="lblImpuesto" FontSize="12" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Margin="24,54,0,0" TextWrapping="Wrap" Text="Impuesto" VerticalAlignment="Top" Width="95"/>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="140,50,461.333,263" Name="bdImpuesto" Background="White" >
+                        <DockPanel Grid.Row="1" Grid.Column="1" Margin="4.667,1.5,4.667,1" Name="dpImpuesto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
+                            <Image PreviewMouseLeftButtonDown="imgImpuesto_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" Name="imgImpuesto" Visibility="Hidden"  Cursor="Hand"  />
+                            <TextBox x:Name="txtImpuesto" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal"  HorizontalAlignment="Stretch" GotFocus="txt_GotFocus1" LostFocus="txt_LostFocus1"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,-0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top"></TextBox>
+                        </DockPanel>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="141,20,460.333,293" Name="bdCuentaAsociada" Background="White" >
+                        <DockPanel Grid.Row="1" Grid.Column="1" Margin="4.667,1.5,4.667,1" Name="dpCuentaAsociada" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
+                            <Image PreviewMouseLeftButtonDown="img_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" Name="imgCuentaAsociada" Visibility="Hidden"  Cursor="Hand"  />
+                            <TextBox x:Name="txtCuentaAsociada" PreviewTextInput="txtCodigo_PreviewTextInput" FontSize="12" FontWeight="Normal" HorizontalAlignment="Stretch" GotFocus="txt_GotFocus" LostFocus="txt_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,-0.333" Width="130" Foreground="Black" VerticalContentAlignment="Top"></TextBox>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TextBlock x:Name="lblCodigo" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,49,0,0" TextWrapping="Wrap" Text="Codigo" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCodigo" PreviewTextInput="txtCodigo_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="156,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock x:Name="lblNombre" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,79,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNombre" PreviewTextInput="txtCodigo_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="156,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock x:Name="lblRIF" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,109,0,0" TextWrapping="Wrap" Text="RIF" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRIF" PreviewTextInput="txtCodigo_PreviewTextInput" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="23" Margin="156,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="157">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <ComboBox x:Name="cbSN" Style="{StaticResource ComboBoxStyle}" DropDownOpened="cbSN_DropDownOpened" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" BorderThickness="1" HorizontalAlignment="Left" Margin="241,45,0,0" VerticalAlignment="Top" Width="72" SelectionChanged="cbSN_SelectionChanged"/>
+        <TextBlock x:Name="lblMoneda" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,139,0,0" TextWrapping="Wrap" Text="Moneda" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbMoneda" DisplayMemberPath="CurrName" DropDownOpened="cbSN_DropDownOpened"  SelectedValuePath="CurrCode" Style="{StaticResource ComboBoxStyle}" Height="23"  IsEditable="True" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="156,135,0,0" VerticalAlignment="Top" Width="157" Background="LightBlue">
+
+
+        </ComboBox>
+        <TextBlock x:Name="lblSaldoCuenta" FontWeight="Bold" HorizontalAlignment="Left" Margin="535,77,0,0" TextWrapping="Wrap" Text="Saldo de Cuenta" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtSaldoCuenta" IsReadOnly="True" Background="#FFE5E5E5" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="652,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock x:Name="lblPedidosEntrada" FontWeight="Bold" HorizontalAlignment="Left" Margin="535,107,0,0" TextWrapping="Wrap" Text="Entrada Mercancia" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPedidosEntrada" BorderThickness="1" IsReadOnly="True" Background="#FFE5E5E5"  HorizontalAlignment="Left" Height="23" Margin="652,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="btnCrear" Content="Crear" HorizontalAlignment="Left" Margin="36,635,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnCrear_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="158,635,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+        <TextBlock x:Name="lblTipoPersona" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,169,0,0" TextWrapping="Wrap" Text="Tipo Persona" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbTipoPersona" DropDownOpened="cbSN_DropDownOpened" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" HorizontalAlignment="Left" Margin="156,165,0,0" VerticalAlignment="Top" Width="157" ItemsSource="{Binding Path=ListTipoCuenta,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="{Binding Path=TipoCuenta,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="{Binding Path=TipoCuenta,UpdateSourceTrigger=PropertyChanged}">
+
+        </ComboBox>
+        <TextBlock x:Name="lblContribuyente" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,199,0,0" TextWrapping="Wrap" Text="Contribuyente" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbContribuyente" DropDownOpened="cbSN_DropDownOpened" Panel.ZIndex="1" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="156,195,0,0" VerticalAlignment="Top" Width="157" ItemsSource="{Binding ListYesNo}" DisplayMemberPath="{Binding YesNo}" SelectedValuePath="{Binding YesNo}">
+
+
+        </ComboBox>
+        <TextBlock x:Name="lblSucursal" FontWeight="Bold" HorizontalAlignment="Left" Margin="537,137,0,0" TextWrapping="Wrap" Text="Sucursal" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbSucursal" DropDownOpened="cbSN_DropDownOpened" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="652,133,0,0" VerticalAlignment="Top" Width="156" ItemsSource="{Binding ListYesNo}" DisplayMemberPath="{Binding YesNo}" SelectedValuePath="{Binding YesNo}">
+
+
+        </ComboBox>
+        <TextBlock x:Name="lblITF" FontWeight="Bold" HorizontalAlignment="Left" Margin="537,169,0,0" TextWrapping="Wrap" Text="Aplica ITF" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbITF" DropDownOpened="cbSN_DropDownOpened" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="652,165,0,0" VerticalAlignment="Top" Width="156" ItemsSource="{Binding ListYesNo}" DisplayMemberPath="{Binding YesNo}" SelectedValuePath="{Binding YesNo}">
+
+
+        </ComboBox>
+        <ComboBox x:Name="cbSaldoMoneda" DropDownOpened="cbSN_DropDownOpened" Style="{StaticResource ComboBoxStyle}" Height="23" Background="White" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus" IsReadOnly="True" Foreground="Black" HorizontalAlignment="Left" Margin="652,41,0,0" VerticalAlignment="Top" Width="156"/>
+    </Grid>
+        </ScrollViewer>
+</Window>

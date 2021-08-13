@@ -1,0 +1,160 @@
+﻿<Window x:Class="Vista.Periodo_Contable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Gestion.ModelPeriodoContable"
+        mc:Ignorable="d"
+        Title="Periodo Contable" Height="551" Width="559" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Window.DataContext>
+        <local1:ModelPeriodoContable/>
+
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="DatePicketStyle" TargetType="{x:Type DatePicker}">
+
+            <Style.Triggers>
+
+                <Trigger Property="Validation.HasError" Value="true">
+
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent}"/>
+
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="lblCodigoPeriodo" HorizontalAlignment="Left" Margin="45,30,0,0" TextWrapping="Wrap" Text="Codigo de Periodo" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <TextBox x:Name="txtCodigoPeriodo" Background="White" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" PreviewTextInput="txtCodigoPeriodo_PreviewTextInput" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="221,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" BorderThickness="1" Text="{Binding Path=PeriodCat, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="lblNombrePeriodo" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,72,0,0" TextWrapping="Wrap" Text="Nombre Periodo" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblSubPeriodos" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left" Margin="45,109,0,0" TextWrapping="Wrap" Text="SubPeriodos" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblCantidadPeriodos" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,146,0,0" TextWrapping="Wrap" Text="Cantidad Periodos" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblFechas" HorizontalAlignment="Left" Margin="57,237,0,0" TextWrapping="Wrap" Text="Fechas:" FontSize="16"  VerticalAlignment="Top" TextDecorations="Underline" FontWeight="Bold"/>
+            <TextBlock x:Name="lblDContabilizacion" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,270,0,0" TextWrapping="Wrap" Text="De Fecha Contabilizacion" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblDVencimiento" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,306,0,0" TextWrapping="Wrap" Text="De Fecha Vencimiento" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblDDocumento" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,339,0,0" TextWrapping="Wrap" Text="De Fecha Documento" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblIEjercicio" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,383,0,0" TextWrapping="Wrap" Text="Inicio del Ejercicio" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblEjercicio" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,419,0,0" TextWrapping="Wrap" Text="Ejercicio" VerticalAlignment="Top"/>
+            <Button x:Name="btnCrear" Content="Crear" HorizontalAlignment="Left" Margin="39,471,0,0" VerticalAlignment="Top" Width="88" Height="24" Click="btnCrear_Click" Padding="3"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="159,471,0,0" VerticalAlignment="Top" Width="92" Height="24" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close" Padding="3"/>
+            <TextBox x:Name="txtNombrePeriodo" Text="{Binding Path=PeriodName, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" PreviewTextInput="txtCodigoPeriodo_PreviewTextInput" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="221,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Background="White">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox x:Name="txtSubPeriodos" BorderThickness="1" HorizontalAlignment="Left" TextAlignment="Center" Height="26" Margin="221,104,0,0" Text="Meses" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" IsReadOnly="True" Background="White" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox x:Name="txtCantidadPeriodos" BorderThickness="1" TextAlignment="Center" HorizontalAlignment="Left" Height="26" Margin="221,142,0,0" TextWrapping="Wrap" Text="12" VerticalAlignment="Top" Width="156" IsReadOnly="True" Background="White" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <DatePicker Style="{StaticResource ResourceKey=DatePicketStyle}"  SelectedDate="{Binding Path=F_RefDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" SelectedDateChanged="dpDContabilizacion_SelectedDateChanged"  HorizontalAlignment="Left" Margin="221,266,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpDContabilizacion">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+
+            <DatePicker SelectedDate="{Binding Path=F_TaxDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent}" SelectedDateChanged="dp_SelectedDateChanged"   HorizontalAlignment="Left" Margin="221,336,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpDDocumento">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <TextBlock x:Name="lblHContabilizacion" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="357,270,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblHVencimiento" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="357,306,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+            <TextBlock x:Name="lblHDocumento" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="357,339,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+            <DatePicker Focusable="False" SelectedDate="{Binding Path=T_RefDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" IsEnabled="False" HorizontalAlignment="Left" Margin="405,266,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpHContabilizacion">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <DatePicker SelectedDate="{Binding Path=T_DueDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" SelectedDateChanged="dp_SelectedDateChanged" HorizontalAlignment="Left" Margin="405,302,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpHVencimiento">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <DatePicker SelectedDate="{Binding Path=T_TaxDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" SelectedDateChanged="dp_SelectedDateChanged" HorizontalAlignment="Left" Margin="405,336,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpHDocumento">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <TextBox x:Name="txtEjercicio" Text="{Binding Path=Year, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" Background="White" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" BorderThickness="1" TextAlignment="Center" HorizontalAlignment="Left" Height="23" Margin="221,419,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <DatePicker  SelectedDate="{Binding Path=FinancYear, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" HorizontalAlignment="Left" Background="White" Margin="221,383,0,0" VerticalAlignment="Top" Width="120" Height="24" x:Name="dpEjercicio">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <TextBlock x:Name="lblEstatus" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="45,194,0,0" TextWrapping="Wrap" Text="Estatus del Periodo" VerticalAlignment="Top"/>
+            <ComboBox  ItemsSource="{Binding EstadosPeriodos, Mode=OneWay}" DisplayMemberPath="PeriodStatName" SelectedValuePath="PeriodStatCode" Style="{StaticResource ComboBoxStyle}"  SelectedValue="{Binding Path=PeriodStat,
+                UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" x:Name="cbEstatusPeriodo" SelectionChanged="cbEstatusPeriodo_SelectionChanged" HorizontalContentAlignment="Center" HorizontalAlignment="Left"  Height="26" IsEnabled="False" Margin="221,190,0,0"  VerticalAlignment="Top" Width="156" IsEditable="False" Background="LightGray" VerticalContentAlignment="Center" LostFocus="comboBox_LostFocus" GotFocus="comboBox_GotFocus">
+               
+            </ComboBox>
+            <DatePicker SelectedDate="{Binding Path=F_DueDate, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent, Mode=TwoWay,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True, ValidatesOnNotifyDataErrors=True}" SelectedDateChanged="dp_SelectedDateChanged"  HorizontalAlignment="Left" Margin="221,302,0,0" VerticalAlignment="Top" Width="120" Height="27" x:Name="dpDVencimiento">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+        </Grid>
+    </ScrollViewer>
+</Window>

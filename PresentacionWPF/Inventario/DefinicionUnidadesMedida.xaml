@@ -1,0 +1,197 @@
+﻿<local:Document x:Class="Vista.DefinicionUnidadesMedida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="DefinicionUnidadesMedida" Height="450" Width="821.077" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="TextBlockStyleValidation" TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                        Value="{Binding (Validation.Errors)[0].ErrorContent, NotifyOnValidationError=True, RelativeSource={RelativeSource Self}, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </Trigger>
+                <DataTrigger Binding="{Binding Path=LineNum}" Value="1">                    
+                    <Setter Property="Background" Value="LightGray"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <Grid VirtualizingPanel.VirtualizationMode="Standard">
+        <DataGrid x:Name="dgDefinicionUnidadesMedidas" CanUserAddRows="True" Margin="51,55,48.667,0"  BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray"   Height="277" BeginningEdit="dgDefinicionUnidadesMedidas_BeginningEdit"  AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="True" SelectionMode="Single"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Top"   GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+           
+            <DataGrid.Resources>
+
+
+                <Style x:Key="TextBoxStyleReadOnly" TargetType="TextBox">
+                    <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=LineNum}" Value="1">
+                            <Setter Property="IsReadOnly" Value="True" />
+                            <Setter Property="Background" Value="LightGray"></Setter>
+                        </DataTrigger>
+                      
+
+                    </Style.Triggers>
+                </Style>
+
+                <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+                    <Setter Property="Background" Value="#FF74C1FF"/>
+                </Style>
+            </DataGrid.Resources>
+
+
+
+            <DataGrid.CellStyle>
+
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Content" Value="Center"/>
+
+
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                            Value="True">
+                            <Setter Property="Background"
+                                Value="#FF74C1FF" />
+                            <Setter Property="Foreground"
+                                Value="Black" />
+
+
+                        </Trigger>
+                    </Style.Triggers>
+
+
+
+                </Style>
+
+            </DataGrid.CellStyle>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+
+                    <Setter Property="Tag" 
+                        Value="{Binding DataContext, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"/>
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+
+                                <MenuItem Header="Eliminar" Command="local:CustomCommands1.Exit" />
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                    
+
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                            Value="True">
+                            <Setter Property="Background"
+                                Value="White" />
+                            <Setter Property="Foreground"
+                                Value="Black" />
+
+                        </Trigger>
+                       
+
+
+                    </Style.Triggers>
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+
+                   
+                </Style>
+
+            </DataGrid.RowStyle>
+
+
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Cantidad Alt"  x:Name="grupo" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=AltQty, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="txtAltQty" Visibility="Visible"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Foreground="Black" Text="{Binding Path=AltQty, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyleReadOnly}" BorderThickness="0" GotFocus="txtAltQty_GotFocus" x:Name="txtAltQty"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Unidad Medida Alt"  x:Name="unidadMedidaAlt" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}"  Foreground="Black" Text="{Binding Path=UomCode, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="txtUomCode"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Name="bd" >
+                                <DockPanel Grid.Row="1" Grid.Column="1" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                    <Image PreviewMouseLeftButtonDown="imgUomCode_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Name="imgUomCode" Visibility="Visible" Cursor="Hand" />
+                                    <TextBox x:Name="txtUomCode" KeyDown="txtUomCode_KeyDown" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=UomCode,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyleReadOnly}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="*" Header="="  x:Name="nombre"  IsReadOnly="True" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="="/>
+                            <Setter Property="Background" Value="LightGray"></Setter>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                
+
+                <DataGridTemplateColumn Header="Cantidad Base"  x:Name="cantidadBase" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black"  Text="{Binding Path=BaseQty, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" x:Name="txtBaseQty"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Foreground="Black" Text="{Binding Path=BaseQty, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyleReadOnly}" x:Name="txtBaseQty"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="*" Header="Unidad Medida Base"  x:Name="unidadBase"  IsReadOnly="True" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">                            
+                            <Setter Property="Background" Value="LightGray"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+               
+                <DataGridTemplateColumn Width="auto"  Visibility="Hidden" >
+                    
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Foreground="Black"  Text="{Binding Path=UomEntry,UpdateSourceTrigger=PropertyChanged}" Name="txtUomEntry"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+               
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="55,365,0,0" VerticalAlignment="Top" Width="101" Padding="3" FontSize="16" Click="btnOk_Click"/>
+        <Button x:Name="btnCancelar" Click="btnCancelar_Click" Content="Cancelar" HorizontalAlignment="Left" Margin="177,365,0,0" VerticalAlignment="Top" Width="107" Padding="3" FontSize="16" Background="Gray" BorderBrush="Gray"/>
+
+    </Grid>
+</local:Document>

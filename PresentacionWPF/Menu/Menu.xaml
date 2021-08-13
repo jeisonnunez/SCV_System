@@ -1,0 +1,232 @@
+﻿<Window x:Class="Vista.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart" xmlns:vista="clr-namespace:Vista"
+        mc:Ignorable="d"
+
+        Title="Menu" Height="668.333" Width="1179.499" Closing="Window_Closing" Loaded="Window_Loaded">
+   
+    <Window.Resources>
+        <DataTemplate  DataType="{x:Type vista:PointShapeLineExampleViewModel}">
+            <vista:PointShapeLineExample/>
+        </DataTemplate>
+        <DataTemplate  DataType="{x:Type vista:ZoomingAndPanningViewModel}">
+            <vista:ZoomingAndPanning/>
+        </DataTemplate>
+        <ContextMenu x:Key="cmButton">
+            <MenuItem Header="Azul" Name="Azul" Click="Azul_Click" >
+                <MenuItem.Icon>
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="#FF2196F3" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Naranja" Name="Naranja" Click="Naranja_Click" >
+                <MenuItem.Icon>
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="#EF8354" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Verde" Name="Verde" Click="Rojo_Click" >
+                <MenuItem.Icon>
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <SolidColorBrush Color="#4CB5AE" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard Duration="00:00:6" Storyboard.TargetProperty="Opacity">
+                    <DoubleAnimation From="0" To="1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <DockPanel  LastChildFill="true" >
+            <StackPanel DockPanel.Dock="Top" Name="stpTop" Background="#FF2196F3">
+                <StackPanel Orientation="Horizontal" Name="stpTopMiddle"  Background="#FF2196F3" VerticalAlignment="Center" HorizontalAlignment="Right"    >
+                    <Button Click="btnMessages_Click" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Name="btnMessages" >
+                        <materialDesign:PackIcon Kind="Email" Width="20" Height="20"/>
+                    </Button>
+
+                    <Button x:Name="btnSetting" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Click="btnSetting_Click">
+                        <materialDesign:PackIcon Kind="Account" Width="20" Height="20"/>
+                    </Button>
+                    <Button x:Name="btnExit" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Foreground="White" Click="btnExit_Click">
+                        <materialDesign:PackIcon Kind="Power" Width="20" Height="20" HorizontalAlignment="Right"/>
+                </Button>
+            </StackPanel>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Bottom">
+                <Grid>
+                    <StatusBar >
+                        <StatusBar.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="3*" />
+
+                                    </Grid.ColumnDefinitions>
+                                </Grid>
+                            </ItemsPanelTemplate>
+                        </StatusBar.ItemsPanel>
+
+                        <StatusBarItem Grid.Column="1" x:Name="StatusMessage" VerticalAlignment="Stretch"  HorizontalContentAlignment="Center"  >
+                            <TextBlock Name="lblCursorPosition" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+                        </StatusBarItem>
+                        <StatusBarItem Grid.Column="0" Name="statusImg" VerticalAlignment="Center" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">
+                            <Image Name="img" Width="100" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </StatusBarItem>
+                       
+                    </StatusBar>
+                    <TextBox AcceptsReturn="True" Name="txtEditor"  />
+                </Grid>
+            </StackPanel>
+
+
+            <StackPanel DockPanel.Dock="Left" Width="300" Name="stpMenu" Background="#FF2196F3">          
+
+                    <Grid Background="{StaticResource PrimaryHueMidBrush}" Name="gdMenu" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="450"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Background="GhostWhite">
+                        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image x:Name="imgLogo" Grid.Row="0" Grid.Column="0" Source="logo.png" PreviewMouseLeftButtonDown="Image_PreviewMouseLeftButtonDown" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill"/>
+                        </Grid>
+                        
+                    </Grid>
+                    <Grid Grid.Row="1" Background="GhostWhite">
+                        <TextBlock x:Name="lblSociedadActual" Foreground="Black" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5,0,0,0"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2" Background="GhostWhite">
+                        <TextBlock x:Name="lblUsuarioActual" Foreground="Black" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="5,0,0,0"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+                        <ScrollViewer HorizontalAlignment="Stretch"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Visible" Height="auto">
+                            <StackPanel x:Name="Menus"  >
+
+                            </StackPanel>
+                        </ScrollViewer>
+                        
+                    </Grid>
+
+                </Grid>
+
+
+
+            
+            </StackPanel>
+
+            <StackPanel Background="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid Grid.Column="1" Grid.Row="1" Background="GhostWhite">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid Grid.Column="0" Grid.Row="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="280"/>
+                                <RowDefinition Height="280"/>
+                                
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Grid.Row="0" BorderBrush="LightGray" BorderThickness="2">
+                                <Grid Grid.Column="0" Grid.Row="0" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding SelectedTitleBusinessInteligence1}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" TextAlignment="Center" FontWeight="Bold" Name="label"  >
+                                        <TextBlock.InputBindings>
+                                            <MouseBinding Command="{Binding BusinessInteligenceCommand1}" MouseAction="LeftClick" />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+                                  
+                                    <ContentControl x:Name="Pages" Grid.Row="1" Content="{Binding SelectedViewModel1}"/>
+                                    
+                                </Grid>
+                            </Border>
+                            <Border Grid.Column="1"  Grid.Row="0" BorderBrush="LightGray" BorderThickness="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Grid Grid.Column="1" Grid.Row="0"   >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding SelectedTitleBusinessInteligence2}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" TextAlignment="Center" FontWeight="Bold" Name="label1"  >
+                                        <TextBlock.InputBindings>
+                                            <MouseBinding Command="{Binding BusinessInteligenceCommand2}" MouseAction="LeftClick" />
+                                        </TextBlock.InputBindings>
+                                    </TextBlock>
+
+                                    <ContentControl x:Name="Pagess" Grid.Row="1" Content="{Binding SelectedViewModel2}"/>
+                                </Grid>
+
+                            </Border>
+                            
+                            <Border Grid.Column="0"  Grid.Row="1" Grid.ColumnSpan="2"  BorderBrush="LightGray" BorderThickness="2">
+                                <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Cuentas por pagar y/o cobrar de socios de negocio" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                                    <vista:BasicColumn Padding="10" Grid.Row="1"></vista:BasicColumn>
+                                </Grid>
+                            </Border>
+                           
+                           
+                            
+
+                           
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+                <!--<Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>-->
+                <!--<Image x:Name="imgImage" Grid.Row="0" Grid.Column="0" Opacity="0.4" Source="logoSCV_V3.PNG"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Stretch="Fill" Height="573" ></Image>-->
+            </StackPanel>
+            
+        </DockPanel>
+    </Grid>
+       
+    
+
+</Window>

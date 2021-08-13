@@ -1,0 +1,16 @@
+﻿<Window x:Class="Vista.XMLFile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="XMLFile" Height="479" Width="800" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="79,386,0,0" VerticalAlignment="Top" Height="35" Width="96" Click="btnOk_Click" FontSize="16" FontWeight="Bold"/>
+        <Image PreviewMouseLeftButtonDown="imgXML_PreviewMouseLeftButtonDown" Source="xml.png"  x:Name="imgXML" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" Margin="729,42,24.333,359.333" />
+        <WebBrowser x:Name="wbXML" HorizontalAlignment="Left" Height="311" Margin="79,45,0,0" VerticalAlignment="Top" Width="614"/>
+        <Image PreviewMouseLeftButtonDown="imgPortal_PreviewMouseLeftButtonDown" Source="002-browser-1.png"  x:Name="imgPortal" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" Margin="729,93,24.333,308.333" />
+
+    </Grid>
+</Window>

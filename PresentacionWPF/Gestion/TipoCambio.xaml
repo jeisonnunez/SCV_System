@@ -1,0 +1,161 @@
+﻿<local:Document x:Class="Vista.TipoCambio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Gestion.ModelTipoCambio"
+                mc:Ignorable="d"
+        Title="TipoCambio" Height="600.333" Width="800" x:Name="tipoCambio" Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Window.Resources>
+       
+        <Style x:Key="TextBlockStyleValidation" TargetType="{x:Type TextBlock}">
+            <!--<Setter Property="Background" Value="Bisque"></Setter>-->
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                </Trigger>
+                <!--<Trigger Property="Background" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                </Trigger>-->
+            </Style.Triggers>
+        </Style>
+
+
+    </Window.Resources>
+    <Window.DataContext>
+        <local1:ModelTipoCambio/>
+
+    </Window.DataContext>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0">
+            <TabControl x:Name="tabControlTipoCambio" HorizontalAlignment="Left" Height="469"  VerticalAlignment="Top" Width="729">
+                <TabControl.Resources>
+                   
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FF2196F3" />
+                                            <Setter  Property="Foreground" Value="White" />
+                                            <Setter  Property="FontSize" Value="14" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="Tipos de Cambio" FontWeight="Bold">
+                    <Grid Background="#FFE5E5E5">
+                        <ComboBox Style="{StaticResource ComboBoxStyle}" DisplayMemberPath="Month" SelectedValuePath="Code" SelectedValue="{Binding Path=SelectedValueMonth,
+                UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" x:Name="cbMes" HorizontalAlignment="Left" Margin="397,26,0,0" VerticalAlignment="Top" Width="132" Background="White" BorderThickness="0" Height="31" Foreground="Black" SelectionChanged="cbMes_SelectionChanged" DropDownClosed="cbMes_DropDownClosed" />
+                        <ComboBox Style="{StaticResource ComboBoxStyle}" x:Name="cbAno" HorizontalAlignment="Left" Margin="553,26,0,0" VerticalAlignment="Top" Width="132" Background="White" BorderThickness="0" Height="31" DisplayMemberPath="Category" SelectedValue="{Binding Path=SelectedValueYear,
+                UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True, NotifyOnValidationError=True}" ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" SelectedValuePath="Category" SelectionChanged="cbAno_SelectionChanged" DropDownClosed="cbAno_DropDownClosed"/>
+
+                        <DataGrid  x:Name="dgTipoCambio" ColumnWidth="*"  BorderThickness="1" BorderBrush="LightGray" CanUserDeleteRows="False" CanUserAddRows="False" HorizontalAlignment="Left" Height="338" Margin="31,82,0,0" VerticalAlignment="Top" Width="654" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" SelectionMode="Single" SelectionUnit="Cell" BeginningEdit="dgTipoCambio_BeginningEdit" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  AutoGeneratingColumn="dgTipoCambio_AutoGeneratingColumn" Foreground="Black" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" CanUserSortColumns="False" CanUserReorderColumns="False">
+
+
+
+                            <DataGrid.CellStyle>
+
+                                <Style TargetType="{x:Type DataGridCell}" >
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                            <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                                        </Trigger>
+                                        <Trigger Property="IsEditing"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                            <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                    <Setter Property="Height" Value="25"></Setter>
+                                    <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+                                    <Setter Property="TextBlock.TextAlignment" Value="Right"></Setter>
+                                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                                    <Style.Resources>
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightBlue" />
+                                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                                    </Style.Resources>
+
+                                </Style>
+
+                            </DataGrid.CellStyle>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                 Value="True">
+                                            <Setter Property="Background"
+                     Value="White" />
+
+
+                                        </Trigger>
+                                    </Style.Triggers>
+
+
+                                </Style>
+
+                            </DataGrid.RowStyle>
+                            <DataGrid.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+
+                      Color="Red" />
+                            </DataGrid.Resources>
+                            <!--<DataGridTemplateColumn Header="Codigo" x:Name="code" Width="*">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" x:Name="txt" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=USD,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"  Width="auto" ></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <TextBox x:Name="txt" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=USD,UpdateSourceTrigger=PropertyChanged}"  Width="auto" ></TextBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>-->
+
+
+
+
+                            <!--</DataGridTemplateColumn>-->
+                        </DataGrid>
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="0,495,0,0" VerticalAlignment="Top" Width="99" Padding="3" FontSize="16" Click="btnOK_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="126,495,0,0" VerticalAlignment="Top" Width="99" Padding="3" Background="Gray" BorderBrush="Gray" FontSize="16" Click="btnWindow_Close"/>
+
+        </Grid>
+    </ScrollViewer>
+</local:Document>

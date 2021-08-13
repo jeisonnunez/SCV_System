@@ -1,0 +1,92 @@
+﻿<Window x:Class="Vista.Importaciones.ImportacionPlanCuentas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista.Importaciones"
+        mc:Ignorable="d"
+        Title="ImportacionPlanCuentas" Height="450" Width="895" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid BorderBrush="Gray" BorderThickness="1" AutoGenerateColumns="False" x:Name="dgImportarCuentas" HorizontalAlignment="Left" Height="257" Margin="48,69,0,0" VerticalAlignment="Top" Width="798">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="AcctCode" Binding="{Binding AcctCode}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding AcctCode}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="AcctName" Binding="{Binding AcctName}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding AcctName}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Levels" Binding="{Binding Levels}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding Levels}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="FatherNum" Binding="{Binding FatherNum}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding FatherNum}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Postable" Binding="{Binding Postable}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding Postable}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="ActType" Binding="{Binding ActType}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding ActType}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="ActCurr" Binding="{Binding ActCurr}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding ActCurr}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="LocManTran" Binding="{Binding LocManTran}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Text" Value="{Binding LocManTran}"/>
+
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="GroupMask" Binding="{Binding Path=GroupMask}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Text" Value="{Binding Path=GroupMask}"/>
+
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnImportar" Click="btnImportar_Click" Content="Importar" HorizontalAlignment="Left" Margin="48,360,0,0" VerticalAlignment="Top" Width="92"/>
+        <Button x:Name="btnBuscar" Click="btnBuscar_Click" Content="Seleccionar" HorizontalAlignment="Left" Margin="739,360,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button x:Name="btnCancelar" Click="btnCancelar_Click" Background="Gray" BorderBrush="Gray" Content="Cancelar" HorizontalAlignment="Left" Margin="164,360,0,0" VerticalAlignment="Top" Width="92"/>
+
+    </Grid>
+</Window>

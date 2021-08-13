@@ -1,0 +1,174 @@
+﻿<local:Converter x:Class="Vista.TablaReconciliacionesInternasAnteriores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="TablaReconciliacionesInternasAnteriores" Height="662.777" Width="1156.288" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+
+        <local:ConverterClosePeriod x:Key="ConverterClosePeriod"/>
+
+    </Window.Resources>
+    <Grid>
+        <DataGrid x:Name="dgHistorialReconciliacion" SelectionChanged="dgHistorialReconciliacion_SelectionChanged" FontWeight="Normal" BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Left" Height="212" Margin="77,64,0,0" VerticalAlignment="Top" Width="1012" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+            <DataGrid.CellStyle>
+
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="#FFE5E5E5"/>
+                </Style>
+
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE5E5E5" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Width="110" Header="Nro Reconciliacion"  x:Name="nroReconciliacion" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding ReconNum, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="180" Header="Importe Reconciliacion" x:Name="importeReconciliacion" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding Total, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">                           
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="140" Header="Tipo Reconciliacion" HeaderStyle="{StaticResource HeaderStyle}" x:Name="tipoReconciliacion" Binding="{Binding ReconType, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                           
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="140" Header="Fecha Reconciliacion" x:Name="fechaReconciliacion" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding ReconDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="130" Header="Fecha Creacion" HeaderStyle="{StaticResource HeaderStyle}" x:Name="fechaCreacion" Binding="{Binding CreateDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="130" Header="Nro Reconciliacion Anulado" HeaderStyle="{StaticResource HeaderStyle}" x:Name="nroReconciliacionAnulado" Binding="{Binding CancelAbs, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="130" Header="Asiento Creado" HeaderStyle="{StaticResource HeaderStyle}" x:Name="asientoCreado" Binding="{Binding ReconJEId, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="lblHistorialReconciliacion" TextDecorations="Underline" FontSize="14" HorizontalAlignment="Left" Margin="77,17,0,0" TextWrapping="Wrap" Text="Historial de Reconciliacion" FontWeight="Bold" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgDetallesReconciliacion" FontWeight="Normal" BorderThickness="1" ColumnWidth="*" BorderBrush="LightGray" HorizontalAlignment="Left" Height="212" Margin="77,358,0,0" VerticalAlignment="Top" Width="1012" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Single" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray"  SelectionUnit="FullRow" Background="#FFE5E5E5">
+            <DataGrid.CellStyle>
+
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="#FFE5E5E5"/>
+                </Style>
+
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE5E5E5" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*" Header="Origen"  x:Name="origen"  IsReadOnly="True" HeaderStyle="{StaticResource HeaderStyle}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DockPanel Grid.Row="1" Grid.Column="1" Margin="4.667,3.667,4.667,2.667" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                <Image PreviewMouseLeftButtonDown="imgSrcObjTyp_PreviewMouseLeftButtonDown" DockPanel.Dock="Left" Source="004-proximo.png" Width="20" Height="15"  Margin="0,0,0,-0.333" Name="imgSrcObjTyp" Cursor="Hand"  />
+                                <TextBlock x:Name="txtSrcObjTyp" Text="{Binding Path=SrcObjTyp,UpdateSourceTrigger=PropertyChanged}"  Margin="0,0,0,-0.333" Width="95" TextAlignment="Center"  ></TextBlock>
+                            </DockPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+                
+                <DataGridTextColumn Width="*" Header="Nro Origen" x:Name="nroOrigen" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding SrcObjAbs, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Cuenta /Codigo SN" HeaderStyle="{StaticResource HeaderStyle}" x:Name="shortName" Binding="{Binding ShortName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                           
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Width="*" Header="Cuenta/Nombre SN" x:Name="account" HeaderStyle="{StaticResource HeaderStyle}" Binding="{Binding Account, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Importe Aplicado" HeaderStyle="{StaticResource HeaderStyle}" x:Name="reconSum" Binding="{Binding ReconSum, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">                            
+                            <Setter Property="TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="lblDetallesReconciliacion" TextDecorations="Underline" FontSize="14" HorizontalAlignment="Left" Margin="77,311,0,0" TextWrapping="Wrap" Text="Detalles de Reconciliacion" FontWeight="Bold" VerticalAlignment="Top"/>
+        <Separator  Height="19" Margin="0,293,0.333,0" VerticalAlignment="Top" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="136,584,0,0" VerticalAlignment="Top" Width="94" Padding="3" Click="btnOk_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="253,584,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+        <Image PreviewMouseLeftButtonDown="imgReturn_PreviewMouseLeftButtonDown" Source="/Vista;component/Finanzas/003-anterior-2.png"   x:Name="imgReturn" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" Margin="75,584,0,16.333" HorizontalAlignment="Left" />
+        <Button x:Name="btnCancelarReconciliacion" Content="Cancelar Reconciliacion" HorizontalAlignment="Left" Margin="935,584,0,0" VerticalAlignment="Top" Width="152" Padding="3" Click="btnCancelarReconciliacion_Click" IsEnabled="False"/>
+
+    </Grid>
+</local:Converter>

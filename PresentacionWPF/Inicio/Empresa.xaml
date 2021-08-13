@@ -1,0 +1,45 @@
+﻿<Window x:Class="Vista.Empresa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Inicio.ValidationErrorEmpresa"
+        mc:Ignorable="d"
+        Title="Crear Nueva Empresa" Height="286" Width="396.459" WindowStartupLocation="CenterScreen"  Closing="Window_Closing" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <local1:ValidationErrorEmpresa/>
+    </Window.DataContext>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" >
+
+            <TextBox x:Name="txtEmpresa" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" BorderThickness="1" HorizontalAlignment="Left" Margin="202,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Grid.Column="1" Height="25" Text="{Binding Sociedad, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Sociedad],UpdateSourceTrigger=PropertyChanged}" >
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="lblEmpresa" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="14,48,0,0" Text="Nombre de Sociedad" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="147" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnCrearEmpresa" Padding="3" FontWeight="Bold" Content="OK" HorizontalAlignment="Center" Margin="14,200,280,0" VerticalAlignment="Top" Width="82" Click="btnCrearEmpresa_Click" Grid.Column="1"/>
+            <TextBlock x:Name="lblDatabase" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left" Margin="14,90,0,0" TextWrapping="Wrap" Text="Nombre Base de Datos" VerticalAlignment="Top" Height="25" Width="161" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtDatabase" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" BorderThickness="1" HorizontalAlignment="Left" Margin="202,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"  Height="25" Grid.ColumnSpan="2" Text="{Binding Database, ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged}"
+                     ToolTip="{Binding ErrorCollection[Database]}" >
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+
+            </TextBox>
+            <Button x:Name="btnCancelar" Content="Cancelar" Click="btnWindow_Close" FontWeight="Bold" HorizontalAlignment="Center" Margin="121,200,157,0" VerticalAlignment="Top" Width="98"  Grid.Column="1" Background="Gray" BorderBrush="Gray" Padding="3"/>
+            <TextBlock x:Name="lblPeriodo" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="14,142,0,0" TextWrapping="Wrap" Text="Definir Periodos Contables" VerticalAlignment="Top" Height="20" Width="183" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnPeriodos" Content="..." HorizontalAlignment="Center" Margin="203,135,131.333,0" VerticalAlignment="Top" Width="43" Click="btnPeriodos_Click" Grid.Column="1" Background="Gray" BorderBrush="Gray" FontSize="18" Height="30" FontWeight="Bold" Padding="3"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

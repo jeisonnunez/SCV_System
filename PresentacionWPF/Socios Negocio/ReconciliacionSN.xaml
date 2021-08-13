@@ -1,0 +1,49 @@
+﻿<Window x:Class="Vista.ReconciliacionSN"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="Reconciliacion Socio Negocio" Height="300.341" Width="537.363"  Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="270" Width="521">
+            <TextBlock x:Name="lblReconciliacion" FontWeight="Bold" HorizontalAlignment="Left" Margin="27,78,0,0" TextWrapping="Wrap" Text="Fecha Reconciliacion" VerticalAlignment="Top"/>
+            <DatePicker HorizontalAlignment="Left" Margin="202,73,0,0" VerticalAlignment="Top" Width="134" Height="25" x:Name="dpReconciliacion" BorderThickness="1">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <Button x:Name="btnReconciliar" Content="Reconciliar" HorizontalAlignment="Left" Margin="20,203,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnReconciliar_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="136,203,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+            <TextBlock x:Name="lblSN" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="27,32,0,0" TextWrapping="Wrap" Text="Socio de Negocio" VerticalAlignment="Top"/>
+            <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="201,28,0,0" x:Name="bdSN" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+                <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpSN"  Background="White">
+                    <Image PreviewMouseLeftButtonDown="imgSN_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgSN" Visibility="Hidden"  Cursor="Hand"  />
+                    <TextBox x:Name="txtSN" FontSize="12" FontWeight="Normal"  GotFocus="txtSN_GotFocus"  LostFocus="txtSN_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="123" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+                </DockPanel>
+            </Border>
+            <DatePicker HorizontalAlignment="Left" Margin="80,125,0,0" VerticalAlignment="Top" Width="138" x:Name="dpDFechaContabilizacion">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <TextBlock x:Name="lblHFechaContabilizacion" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="257,129,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+            <DatePicker HorizontalAlignment="Left" Margin="309,125,0,0" VerticalAlignment="Top" Width="132" x:Name="dpHFechaContabilizacion">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <TextBlock x:Name="lblDFechaContabilizacion" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="32,129,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        </Grid>
+    </ScrollViewer>
+</Window>

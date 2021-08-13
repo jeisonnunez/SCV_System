@@ -1,0 +1,93 @@
+﻿<Window x:Class="Vista.ListaCodigosFiscales"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="ListaCodigosFiscales" Height="259.135" Width="331.673" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+   
+        <Grid>
+
+
+            <TextBox x:Name="txtFilter" BorderThickness="1" Margin="14,21,0,0" TextChanged="txtFilter_TextChanged" Height="28" VerticalAlignment="Top" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" HorizontalAlignment="Left" Width="159">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        <ListView x:Name="ListCodigosFiscales" GridViewColumnHeader.Click="ListCodigosFiscales_Click"  MouseDoubleClick="ListCodigosFiscales_MouseDoubleClick"  Foreground="Black" Margin="14,63,10,9.667" BorderBrush="Black" BorderThickness="1" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType ="{x:Type ListViewItem}" >
+                        <Setter Property="HorizontalContentAlignment" Value = "Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value ="Stretch" />
+                    </Style >
+                </ListView.ItemContainerStyle>
+
+                <ListView.View>
+
+                    <GridView >
+
+
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <!-- Set any properties you want to set -->
+                                <Setter Property="Background" Value="#FF2196F3" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Height" Value="30" />
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        <GridViewColumn  Header="Codigo" Width="{Binding ElementName=col1, Path=ActualWidth}"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="LightGray" BorderThickness= "1,1,0,1" Margin ="-8,-2,-8,-2"  >
+                                        <StackPanel Margin ="-8,-2,-8,-2" >
+                                            <TextBlock TextAlignment="Center" Text="{Binding Code}" Height="22"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Tasa" Width="{Binding ElementName=col2, Path=ActualWidth}" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="LightGray" BorderThickness= "1,1,0,1" Margin ="-8,-2,-8,-2"  >
+                                        <StackPanel Margin ="-8,-2,-8,-2" >
+                                            <TextBlock TextAlignment="Center" Text="{Binding Rate}" Height="22"></TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                    </GridView>
+                </ListView.View>
+
+
+            </ListView>
+            <Grid Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <!--Width is bound to width of the first GridViewColumn -->
+                    <ColumnDefinition Width="*"/>
+                    <!--Width is set to "Fill"-->
+                    <ColumnDefinition Width="*"/>
+                    <!--Correction Width-->
+
+
+                </Grid.ColumnDefinitions>
+                <!--This is the hidden helper Field which is used to bind to, using the "Fill" column of the helper grid-->
+                <Grid Grid.Column="0" x:Name="col1"/>
+                <Grid Grid.Column="1" x:Name="col2"/>
+
+            </Grid>
+
+
+        </Grid>
+ 
+</Window>

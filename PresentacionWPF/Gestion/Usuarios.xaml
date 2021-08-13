@@ -1,0 +1,93 @@
+﻿<local:Document x:Class="Vista.Usuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista" xmlns:local1="clr-namespace:Vista.Gestion.ModelUsuarios"
+        mc:Ignorable="d"
+        Title="Usuarios" Height="417" Width="617" Closing="Window_Closing" WindowStartupLocation="CenterScreen" MouseRightButtonDown="Grid_MouseRightButtonDown">
+    <Window.DataContext>
+        <local1:ModelUsuarios/>
+    </Window.DataContext>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" >
+
+            <Image x:Name="imgleft" PreviewMouseLeftButtonDown="imgleft_PreviewMouseLeftButtonDown" Cursor="Hand" Source="003-anterior-2.png" HorizontalAlignment="Left" Height="28" Margin="279,10,0,0" VerticalAlignment="Top" Width="31"/>
+            <Image x:Name="imgRight" PreviewMouseLeftButtonDown="imgRight_PreviewMouseLeftButtonDown" Cursor="Hand" Source="004-proximo.png" HorizontalAlignment="Left" Height="28" Margin="319,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgCrear" PreviewMouseLeftButtonDown="imgCrear_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-texto.png" HorizontalAlignment="Left" Height="28" Margin="166,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgBuscar" PreviewMouseLeftButtonDown="imgBuscar_PreviewMouseLeftButtonDown" Cursor="Hand" Source="002-encontrar.png" HorizontalAlignment="Left" Height="28" Margin="205,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgInicio" PreviewMouseLeftButtonDown="imgInicio_PreviewMouseLeftButtonDown" Cursor="Hand" Source="001-anterior.png" HorizontalAlignment="Left" Height="28" Margin="243,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+            <Image x:Name="imgFin" Cursor="Hand" PreviewMouseLeftButtonDown="imgFin_PreviewMouseLeftButtonDown" Source="002-anterior-1.png" HorizontalAlignment="Left" Height="28" Margin="355,10,0,0" VerticalAlignment="Top" Width="31" RenderTransformOrigin="1.296,0.488"/>
+
+            <TextBlock x:Name="lblCodigoUsuario" HorizontalAlignment="Left" Margin="49,62,0,0" TextWrapping="Wrap" Text="Codigo Usuario" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <TextBlock x:Name="lblNombreUsuario" HorizontalAlignment="Left" Margin="49,98,0,0" TextWrapping="Wrap" Text="Nombre Usuario" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+            <TextBox x:Name="txtCodigoUsuario" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="170,59,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewTextInput="txtCodigoUsuario_PreviewTextInput" Text="{Binding Path=User_code, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
+                     ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox x:Name="txtNombreUsuario" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" BorderThickness="1" HorizontalAlignment="Left" Height="23" Margin="170,97,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewTextInput="txtCodigoUsuario_PreviewTextInput" Text="{Binding Path=User_name, Mode=TwoWay, ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
+                     ToolTip="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="165" Margin="49,151,0,0" VerticalAlignment="Top" Width="495">
+                <TabControl.Resources>
+                    <Style TargetType="TabItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TabItem">
+                                    <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FF2196F3" />
+                                            <Setter  Property="Foreground" Value="White" />
+                                            <Setter  Property="FontSize" Value="14" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem Header="General" FontWeight="Bold" >
+                    <Grid Background="#FFE5E5E5">
+                        <TextBlock x:Name="lblClaveAcceso" Foreground="Black" HorizontalAlignment="Left" Margin="18,16,0,0" TextWrapping="Wrap" Text="Clave Acceso" FontSize="14" FontWeight="Bold" VerticalAlignment="Top"/>
+                        <PasswordBox x:Name="txtClaveAcceso" Background="LightGray" Password="****" Foreground="Black" BorderThickness="1" HorizontalAlignment="Left" Height="24" Margin="117,13,0,0"  VerticalAlignment="Top" Width="120" local:Usuarios.Password="{Binding Path=Password,ValidatesOnDataErrors=True,
+                UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True}"
+                     ToolTip="{Binding ErrorCollection[Password]}">
+                            <PasswordBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="3"/>
+                                </Style>
+                            </PasswordBox.Resources>
+                        </PasswordBox>
+                        <Button x:Name="btnClave" Content="..." HorizontalAlignment="Left" Margin="250,14,0,95.667" Width="37" Padding="3" FontSize="16" FontWeight="Bold" Height="Auto" Click="btnClave_Click"/>
+                        <CheckBox x:Name="chxBloqueado" Foreground="Black" Content="Bloqueado" HorizontalAlignment="Left" Margin="18,62,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Click="chxBloqueado_Click"/>
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+            <Button x:Name="btnCrear" Content="Crear" HorizontalAlignment="Left" Margin="49,336,0,0" VerticalAlignment="Top" Width="75" Padding="3" Click="btnCrear_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="153,336,0,0" VerticalAlignment="Top" Width="77" Padding="3" Background="Gray" BorderBrush="Gray" Click="btnCancelar_Click"/>
+
+        </Grid>
+    </ScrollViewer>
+</local:Document>

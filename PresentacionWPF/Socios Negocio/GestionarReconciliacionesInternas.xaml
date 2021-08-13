@@ -1,0 +1,64 @@
+﻿<Window x:Class="Vista.GestionarReconciliacionesInternasAnteriores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="GestionarReconciliacionesInternasAnteriores" Height="321.292" Width="597.619" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock x:Name="lblSNDesde" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="23,32,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblSNHasta" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="310,32,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="155,28,0,0" x:Name="bdDesdeSN" Background="White" HorizontalAlignment="Left" Width="135" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpDesdeSN"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgDesdeSN_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="/Vista;component/Utilidades/Formulario/lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgDesdeSN" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtDesdeSN" FontSize="12" FontWeight="Normal"  GotFocus="txtSN_GotFocus"  LostFocus="txtSN_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="123" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+            </DockPanel>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Margin="357,28,0,0" x:Name="bdHastaSN" Background="White" HorizontalAlignment="Left" Width="139" Height="25" VerticalAlignment="Top" >
+            <DockPanel Grid.Row="1" Grid.Column="1"  Margin="4.667,0.667,4.667,0.5" x:Name="dpHastaSN"  Background="White">
+                <Image PreviewMouseLeftButtonDown="imgHastaSN_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="/Vista;component/Utilidades/Formulario/lupa.png" Width="20" Margin="0,0,0,-0.333" x:Name="imgHastaSN" Visibility="Hidden"  Cursor="Hand"  />
+                <TextBox x:Name="txtHastaSN" FontSize="12" FontWeight="Normal"  GotFocus="txtSN_GotFocus"  LostFocus="txtSN_LostFocus"   BorderBrush="Gray" BorderThickness="0" Margin="0,0,0,0.333" Width="119" Foreground="Black" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
+            </DockPanel>
+        </Border>
+        <TextBlock x:Name="lblDFechaVencimiento" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="23,91,0,0" TextWrapping="Wrap" Text="Desde" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="154,85,0,0" VerticalAlignment="Top" Width="138" x:Name="dpDFechaReconciliacion">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="lblHFechaVencimiento" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="313,89,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left" Margin="357,85,0,0" VerticalAlignment="Top" Width="139" x:Name="dpHFechaReconciliacion">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <TextBlock x:Name="lblDNroReconciliacion" FontWeight="Bold" HorizontalAlignment="Left" Margin="21,141,0,0" TextWrapping="Wrap" Text="Nro Reconciliacion de" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDNroReconciliacion" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="25" Margin="154,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" >
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="txtHNroReconciliacion" BorderThickness="1" LostFocus="textBox_LostFocus" GotFocus="textBox_GotFocus" Background="White" HorizontalAlignment="Left" Height="25" Margin="358,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" >
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBlock x:Name="lblHFechaVencimiento_Copy" FontWeight="Bold" FontSize="12" Foreground="Black" HorizontalAlignment="Left" Margin="313,139,0,0" TextWrapping="Wrap" Text="Hasta" VerticalAlignment="Top"/>
+        <Button x:Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="26,233,0,0" VerticalAlignment="Top" Width="95" Padding="3" Click="btnOK_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" Click="btnCancelar_Click" HorizontalAlignment="Left" Margin="148,233,0,0" VerticalAlignment="Top" Width="94" Padding="3" Background="Gray" BorderBrush="Gray"/>
+
+    </Grid>
+</Window>

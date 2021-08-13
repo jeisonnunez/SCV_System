@@ -1,0 +1,185 @@
+﻿<local:Document x:Class="Vista.ClasesImpuestos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="ClasesImpuestos" Height="450" Width="664" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CustomCommands.Exit" CanExecute="ExitCommand_CanExecute" Executed="ExitCommand_Executed" />
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style x:Key="TextBlockStyleValidation" TargetType="{x:Type TextBlock}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource Self},
+                Path=(Validation.Errors)[0].ErrorContent,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+       
+    </Window.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+            <DataGrid x:Name="dgClasesImpuestos" Background="#FFE5E5E5" BorderThickness="1" BorderBrush="LightGray" ColumnWidth="*" HorizontalAlignment="Center" Height="311" Margin="0,30,0,0" VerticalAlignment="Top" Width="575"  CanUserResizeRows="True" CanUserSortColumns="True" CanUserReorderColumns="True" AutoGenerateColumns="False" BeginningEdit="dgClasesImpuestos_BeginningEdit"  CanUserDeleteRows="False"  Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" GridLinesVisibility="All" VerticalGridLinesBrush="Gray" HorizontalGridLinesBrush="Gray" SelectionMode="Extended" SelectionUnit="FullRow" ItemsSource="{Binding ValidateErrorsClasesImpuestos}"   >
+                <DataGrid.CellStyle>
+
+                    <Style TargetType="{x:Type DataGridCell}" >
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="#FF74C1FF" />
+                                <Setter Property="Foreground"
+                     Value="Black" />
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="Height" Value="30"></Setter>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"></Setter>
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                    </Style>
+
+                </DataGrid.CellStyle>
+
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                      
+                      
+                        
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"
+                 Value="True">
+                                <Setter Property="Background"
+                     Value="White" />
+
+
+                            </Trigger>
+                        </Style.Triggers>
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                        </Style.Resources>
+
+                        <Setter Property="Tag" 
+            Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, 
+                            Path=DataContext}"/>
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu DataContext="{Binding PlacementTarget.Tag, 
+                                               RelativeSource={RelativeSource Self}}">
+
+                                    <MenuItem Header="Eliminar" Command="local:CustomCommands.Exit" />
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Setter Property="ValidationErrorTemplate" Value="{x:Null}"/>
+
+                    </Style>
+
+                </DataGrid.RowStyle>
+                <DataGrid.Resources>
+                    <Style x:Key="TextBoxStyle" TargetType="TextBox">
+                        <Setter Property="Background" Value="#FF74C1FF"></Setter>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Codigo" Width="auto"  x:Name="codigo" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=Code, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"  Name="txtCodeCurrency"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=Code,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtCodeCurrency"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Nombre" Width="auto"  x:Name="name" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" Name="txtName"></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtName" ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Tasa" Width="auto"  x:Name="tasa" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <TextBox Foreground="Black" Text="{Binding Path=Rate,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}" ></TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Foreground="Black" Text="{Binding Path=Rate,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Cuenta Impuesto de Venta" Width="auto"  x:Name="salestax" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Name="bd" >
+                                    <DockPanel Grid.Row="1" Grid.Column="1" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                        <Image PreviewMouseLeftButtonDown="img_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Name="img" Visibility="Visible" Cursor="Hand" />
+                                        <TextBox x:Name="txtSalesTax" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=SalesTax,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxStyle}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                                    </DockPanel>
+                                </Border>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Style="{StaticResource ResourceKey=TextBlockStyleValidation}" Text="{Binding Path=SalesTax,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Name="txtSalesTax"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Cuenta Impuesto de Compra" Width="auto"  x:Name="purchtax" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+
+                            <DataTemplate>
+                                <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="3" Name="bd" >
+                                    <DockPanel Grid.Row="1" Grid.Column="1" Name="dp" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                                        <Image PreviewMouseLeftButtonDown="imgPuchTax_PreviewMouseLeftButtonDown" DockPanel.Dock="Right" Source="lupa.png" Width="20" Name="imgPuchTax" Visibility="Visible" Cursor="Hand" />
+                                        <TextBox x:Name="txtPurchTax" FontSize="12" HorizontalAlignment="Stretch" Foreground="Black" Text="{Binding Path=PurchTax,UpdateSourceTrigger=PropertyChanged}"   BorderBrush="Gray" BorderThickness="0"  Width="auto" ></TextBox>
+                                    </DockPanel>
+                                </Border>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Foreground="Black" Text="{Binding Path=PurchTax,UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Style="{StaticResource ResourceKey=TextBlockStyleValidation}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+            <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="0,365,0,0" VerticalAlignment="Top" Width="85" Padding="3" FontSize="16" Click="btnOk_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="104,365,0,0" VerticalAlignment="Top" Width="89" Padding="3" FontSize="16" Background="Gray" BorderBrush="Gray" Click="btnWindow_Close"/>
+
+        </Grid>
+    </ScrollViewer>
+</local:Document>

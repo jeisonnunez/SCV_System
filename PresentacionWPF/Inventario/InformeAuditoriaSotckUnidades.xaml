@@ -1,0 +1,109 @@
+﻿<local:Converter x:Class="Vista.InformeAuditoriaSotckUnidades"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        Title="InformeAuditoriaSotckUnidades" Height="559.295" Width="916.042" Closing="Window_Closing" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+        <local:StyleConverter x:Key="StyleConverter"/>
+    </Window.Resources>
+    <Grid>
+        <DataGrid x:Name="dgInformeStockUnidades" ColumnWidth="*" HorizontalContentAlignment="Stretch" Grid.Row="0" Grid.Column="0" Height="285" Margin="77,136,93.333,0"  BorderThickness="1"  BorderBrush="LightGray" AutoGenerateColumns="False"  CanUserDeleteRows="False" CanUserSortColumns="False" SelectionMode="Extended" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"   VerticalAlignment="Top"  GridLinesVisibility="All" VerticalGridLinesBrush="LightGray" HorizontalGridLinesBrush="LightGray" CanUserAddRows="False" SelectionUnit="FullRow" FontWeight="Bold" FontSize="10"  Foreground="Black" Background="#FFE5E5E5"  Padding="0">
+
+            <DataGrid.CellStyle>
+
+                <Style TargetType="{x:Type DataGridCell}" >
+                    <Setter Property="Padding" Value="0"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Num}" Value="1">
+                            <Setter Property="Background" Value="#FFE5E5E5"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Num}" Value="0">
+                            <Setter Property="Background" Value="White"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+            </DataGrid.CellStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+
+
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black" />
+                    </Style.Resources>
+
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="TextBoxBase.IsReadOnly" Value="True"/>
+                    <Setter Property="Height" Value="20"/>
+
+
+                </Style>
+
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*" Header="Nro Articulo" x:Name="nroarticulo" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding ItemCode, UpdateSourceTrigger=PropertyChanged}" x:Name="txtTransId" TextAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*" Header="Descripcion" x:Name="descripcion" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Dscription, UpdateSourceTrigger=PropertyChanged}" x:Name="txtTransId" TextAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Width="*" Header="Cantidad" x:Name="cantidad" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn Width="*" Header="Unidad Medida Alternativa" x:Name="unidadAlternativa" IsReadOnly="True" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0"  Text="{Binding UomCode, UpdateSourceTrigger=PropertyChanged}" x:Name="txtQuantity" TextAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+               
+                                          
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock x:Name="lblDeFecha" HorizontalAlignment="Left" Margin="74,27,0,0" TextWrapping="Wrap" Text="De Fecha" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblHastaFecha" HorizontalAlignment="Left" Margin="344,28,0,0" TextWrapping="Wrap" Text="Hasta" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+
+        <DatePicker  x:Name="dpFechaHasta" HorizontalAlignment="Left" Margin="403,24,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <DatePicker  x:Name="dpFechaDesde" HorizontalAlignment="Left" Margin="152,24,0,0" VerticalAlignment="Top" Width="121" Height="25" >
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="3"/>
+
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Button x:Name="btnOk" Click="btnOk_Click" Content="OK" HorizontalAlignment="Left" Margin="77,457,0,0" VerticalAlignment="Top" Width="100"/>
+        <Image PreviewMouseLeftButtonDown="imgExcel_PreviewMouseLeftButtonDown" Source="excel.png"  x:Name="imgExcel" Cursor="Hand" Visibility="Visible" RenderTransformOrigin="1.591,0.437" Width="40" Height="40" Margin="744,28,62,0" VerticalAlignment="Top" />
+        <Button x:Name="btnCancelar" Click="btnCancelar_Click" Content="Cancelar" HorizontalAlignment="Left" Margin="208,457,0,0" VerticalAlignment="Top" Width="100" Background="Gray" BorderBrush="Gray"/>
+
+    </Grid>
+</local:Converter>
