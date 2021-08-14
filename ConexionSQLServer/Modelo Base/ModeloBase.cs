@@ -36,14 +36,14 @@ namespace Datos
                 return Tuple.Create(tabla, error);
 
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 
                 DataTable tabla = new DataTable();
 
                 Connection.Close();
 
-                return Tuple.Create(tabla, e.Message);
+                return Tuple.Create(tabla, ex.Message);
             }
 
         }
